@@ -7,7 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HqwActivity extends AppCompatActivity {
+public class HQWActivity extends AppCompatActivity {
     Toast toast;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
