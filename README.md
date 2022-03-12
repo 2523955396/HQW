@@ -23,4 +23,3 @@ implementation 'com.gitee.BAILIS:HQW:'version'
 3. 上传功能简化 上传进度 上传成功 上传失败 网络监测
 4. 文件转换简化 字节转换为带标签 MB GB 文件File转Uri Uri转File
 5. 对兼容各大android系统做准备并通知
-
