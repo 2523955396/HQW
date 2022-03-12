@@ -11,7 +11,8 @@ repositories {
         maven { url 'https://jitpack.io' }
     }
 ```
-build.gradle![最新版本](https://jitpack.io/v/com.gitee.BAILIS/HQW.svg "version")
+build.gradle
+![最新版本](https://jitpack.io/v/com.gitee.BAILIS/HQW.svg "version")
 ```
 implementation 'com.gitee.BAILIS:HQW:'version'
 ```
