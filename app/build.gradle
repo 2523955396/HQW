@@ -46,9 +46,6 @@ dependencies {
     //圆形
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    //纵向tablayout  项目停止维护
-    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
-
     //网络传输
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
