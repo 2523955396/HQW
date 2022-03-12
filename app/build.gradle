@@ -6,8 +6,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.huanqi.hqw"
-        minSdk 29
+        minSdk 23
         targetSdk 30
         versionCode 1
         versionName "1.0"
