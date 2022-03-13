@@ -33,7 +33,6 @@ public class HQWHttp {
 //        okHttpClient.newBuilder().connectTimeout(5, TimeUnit.MINUTES);
         Request request = new Request.Builder()
                 .url(url)
-                .header("Accept-Encoding", "identity")
                 .build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
