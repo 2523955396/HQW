@@ -13,8 +13,13 @@ public class HQWFragment extends Fragment {
         if (toast!=null){
             toast.cancel();
         }
-        toast= Toast.makeText(getActivity(),text,Toast.LENGTH_SHORT);
-        toast.show();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                toast= Toast.makeText(getActivity(),text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
     }
 
     public void GotoActivity(Class<?> activity){

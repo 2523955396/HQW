@@ -1,6 +1,7 @@
 package com.huanqi.hqw.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -24,8 +25,18 @@ public class HQWActivity extends AppCompatActivity {
         if (toast!=null){
             toast.cancel();
         }
-        toast= Toast.makeText(this,text,Toast.LENGTH_SHORT);
-        toast.show();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                toast= Toast.makeText(HQWActivity.this,text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+    }
+    public void cancelToast(){
+        if (toast!=null){
+            toast.cancel();
+        }
     }
 
     public void GotoActivity(Class<?> activity){
