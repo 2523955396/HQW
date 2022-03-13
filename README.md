@@ -27,3 +27,7 @@ implementation 'com.gitee.BAILIS:HQW:'version'
 #### 完成的计划
 1. 权限获取(Beta v0.3)
 2. 文件下载(Beta v0.3.2)
+
+
+#### 整库情况
+1. 本库支持android6.0~11,android6.012正在预备适配中
