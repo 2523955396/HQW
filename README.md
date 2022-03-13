@@ -25,5 +25,5 @@ implementation 'com.gitee.BAILIS:HQW:'version'
 5. 对兼容各大android系统做准备并通知
 
 #### 完成的计划
-1.权限获取(Beta v0.3)
-2.文件下载(Beta v0.3.2)
+1. 权限获取(Beta v0.3)
+2. 文件下载(Beta v0.3.2)
