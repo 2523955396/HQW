@@ -30,4 +30,4 @@ implementation 'com.gitee.BAILIS:HQW:'version'
 
 
 #### 整库情况
-1. 本库支持android6.0~11,android6.012正在预备适配中
+1. 本库支持android6~11,android12正在预备适配中
