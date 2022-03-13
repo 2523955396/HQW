@@ -18,12 +18,10 @@ public class MainActivity extends HQWActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         HQWpermissions(PERMISSIONS,new permission() {
             @Override
             public void onsucceed() {
@@ -40,6 +38,4 @@ public class MainActivity extends HQWActivity {
             }
         });
     }
-
-
 }

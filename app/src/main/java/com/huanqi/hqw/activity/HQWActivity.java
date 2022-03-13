@@ -20,13 +20,6 @@ public class HQWActivity extends AppCompatActivity {
     boolean isfirstfailure=false;
     public  permission permission;
 
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     public void setToast(String text){
         if (toast!=null){
             toast.cancel();
