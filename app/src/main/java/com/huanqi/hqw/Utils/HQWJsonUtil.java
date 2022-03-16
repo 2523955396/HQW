@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class HQWJsonUtil {
 
-    public String JsontoString(String jsontext,String key){
+    public static String JsontoString(String jsontext,String key){
         String textout="";
         try {
             textout=new JSONObject(jsontext).getString(key);
