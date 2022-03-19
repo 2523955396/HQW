@@ -1,11 +1,11 @@
-package com.huanqi.hqw.file;
+package com.huanqi.hqw.Utils;
 
 import android.os.Environment;
 
 import java.io.File;
 import java.text.DecimalFormat;
 
-public class HQWFile {
+public class HQWFileUtil {
 
     public static File File(String catalogue,String filename){
         File filecatalogue=new File(catalogue);

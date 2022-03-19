@@ -1,20 +1,15 @@
 package com.huanqi.hqw.http;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.huanqi.hqw.Interface.File_download;
 import com.huanqi.hqw.bean.DownloadFileBean;
-import com.huanqi.hqw.file.HQWFile;
+import com.huanqi.hqw.Utils.HQWFileUtil;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -54,7 +49,7 @@ public class HQWHttp {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        file_download.progress(file.length(), responseBody.contentLength(), HQWFile.getPrintSize(file.length()), HQWFile.getPrintSize(responseBody.contentLength()));
+                        file_download.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                         file_download.onsuccess(file, "下载中");
 
                     }
@@ -88,7 +83,7 @@ public class HQWHttp {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        file_download.progress(file.length(), responseBody.contentLength(), HQWFile.getPrintSize(file.length()), HQWFile.getPrintSize(responseBody.contentLength()));
+                        file_download.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                         file_download.onsuccess(file, "下载中");
 
                     }
