@@ -101,11 +101,11 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void HQWsetScreen(boolean islighting){
-        if (islighting){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
-        }else {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
-        }
-    }
+//    public void HQWsetScreen(boolean islighting){
+//        if (islighting){
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
+//        }else {
+//            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
+//        }
+//    }
 }

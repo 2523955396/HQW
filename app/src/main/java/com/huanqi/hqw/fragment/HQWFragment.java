@@ -55,11 +55,11 @@ public class HQWFragment extends Fragment {
         }
     }
 
-    public void HQWsetScreen(boolean islighting){
-        if (islighting){
-            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
-        }else {
-            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
-        }
-    }
+//    public void HQWsetScreen(boolean islighting){
+//        if (islighting){
+//            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
+//        }else {
+//            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
+//        }
+//    }
 }
