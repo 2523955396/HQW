@@ -21,7 +21,7 @@ public class MainActivity extends HQWActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        HQWpermissions(PERMISSIONS,new permission() {
+        HQWPermissions(PERMISSIONS,new permission() {
             @Override
             public void onsucceed() {
 
