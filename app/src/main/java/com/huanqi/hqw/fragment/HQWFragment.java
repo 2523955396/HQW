@@ -2,6 +2,7 @@ package com.huanqi.hqw.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -51,6 +52,14 @@ public class HQWFragment extends Fragment {
             orientation.horizontal();
         }else{
             orientation.vertical();
+        }
+    }
+
+    public void HQWisLighting(boolean islighting){
+        if (islighting){
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
+        }else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
         }
     }
 }
