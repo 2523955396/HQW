@@ -16,7 +16,7 @@ public class HQWFileUtil {
         return fileentire;
     }
 
-    public static File SDFile(String catalogue,String filename){
+    public static File SDFile(String catalogue,String filename){ //catalogue格式为  /电影   filename格式为 喜洋洋.mp4
         File filecatalogue=new File(Environment.getExternalStorageDirectory()+catalogue);
         if (!filecatalogue.exists()){
             filecatalogue.mkdirs();
