@@ -50,11 +50,11 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public  void HQWorientation(orientation orientation){
+    public  void HQWOrientation(orientation orientation){
         this.orientation=orientation;
     }
 
-    public String HQWgetorientation(){
+    public String HQWgetOrientation(){
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             return "竖屏";
         }else {
@@ -73,7 +73,7 @@ public class HQWActivity extends AppCompatActivity {
     }
 
 
-    public void HQWpermissions(String[] permissions,com.huanqi.hqw.Interface.permission permission) {
+    public void HQWPermissions(String[] permissions,com.huanqi.hqw.Interface.permission permission) {
         requestPermissions(permissions, 777);
         this.permission = permission;
     }
@@ -101,7 +101,7 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void HQWsetSCREEN(boolean islighting){
+    public void HQWsetScreen(boolean islighting){
         if (islighting){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         }else {
