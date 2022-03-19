@@ -101,7 +101,7 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void HQWisLighting(boolean islighting){
+    public void HQWsetSCREEN(boolean islighting){
         if (islighting){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         }else {
