@@ -65,11 +65,14 @@ public class HQWActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-           orientation.horizontal();
-        }else{
-            orientation.vertical();
+        if (orientation!=null){
+            if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+                orientation.horizontal();
+            }else{
+                orientation.vertical();
+            }
         }
+
     }
 
 
