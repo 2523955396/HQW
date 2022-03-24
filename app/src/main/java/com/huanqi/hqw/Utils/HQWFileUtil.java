@@ -56,9 +56,9 @@ public class HQWFileUtil {
 
 
     /**
-     * Uri格式转换File
+     * Uri格式转换为FilePath路径
      */
-    public static String UritoFile(Context context, Uri imageUri) {
+    public static String UritoFilePath(Context context, Uri imageUri) {
         if (context == null || imageUri == null) {
             return null;
         }
