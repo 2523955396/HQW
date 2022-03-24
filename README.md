@@ -27,8 +27,10 @@ implementation 'com.gitee.BAILIS:HQW:'version'
 #### 完成的计划
 1. 权限获取(Beta v0.3)
 2. 文件下载(Beta v0.3.2)
-3. 屏幕当前横竖屏状态
+3. 屏幕设置控制监听
 4. PD与PX转换
+5. Uri转File
+6. 设备信息获取SD卡获取
 
 
 #### 整库情况
