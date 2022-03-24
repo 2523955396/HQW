@@ -5,7 +5,9 @@ import android.os.Bundle;
 
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
+import com.huanqi.hqw.Utils.HQWDeviceInfoUtil;
 import com.huanqi.hqw.Utils.HQWLogUtil;
+import com.huanqi.hqw.Utils.HQWSDCardUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 
 import java.util.Timer;
@@ -24,7 +26,6 @@ public class MainActivity extends HQWActivity {
         HQWPermissions(PERMISSIONS,new permission() {
             @Override
             public void onsucceed() {
-
             }
             @Override
             public void onfirstfailure() {

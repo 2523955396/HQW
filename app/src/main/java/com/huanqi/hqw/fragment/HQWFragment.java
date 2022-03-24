@@ -1,6 +1,7 @@
 package com.huanqi.hqw.fragment;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -35,6 +36,28 @@ public class HQWFragment extends Fragment {
 
     public  void HQWOrientation(orientation orientation){
         this.orientation=orientation;
+    }
+
+    public void HQWsetOrientation(String name){
+        if (name.equals("横屏")){//设置横屏
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }else if (name.equals("竖屏")){//设置竖屏
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }else if (name.equals("首选")){//用户当前的首选方向
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+        }
+        else if (name.equals("继承")){//继承Activity堆栈中当前Activity下面的那个Activity的方向
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
+        }
+        else if (name.equals("自动")){//由物理感应器决定显示方向，它取决于用户如何持有设备，当 设备 被旋转时方向会随之变化——在横屏与竖屏之间
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        }
+        else if (name.equals("忽略")){//忽略物理感应器——即显示方向与物理感应器无关，不管用户如何旋转设备显示方向都不会随着改变("unspecified"设置除外)
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        }
+        else if (name.equals("默认")){//未指定，此为默认值，由Android系统自己选择适当的方向，选择策略视具体设备的配置情况而定，因此不同的设备会有不同的方向选择
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     public String HQWgetOrientation(){
