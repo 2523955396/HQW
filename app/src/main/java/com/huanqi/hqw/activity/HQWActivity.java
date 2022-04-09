@@ -18,11 +18,11 @@ import androidx.core.content.ContextCompat;
 
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
+import com.huanqi.hqw.Utils.HQWLogUtil;
 
 public class HQWActivity extends AppCompatActivity {
     Toast toast;
-    int maxpermission = 0;//授权了多少个
-    boolean isfirstfailure=false;
+    int maxpermission = 0;//权限授权了多少个
     public  permission permission;
     public orientation orientation;
 
@@ -115,12 +115,9 @@ public class HQWActivity extends AppCompatActivity {
                         permission.onsucceed();
                     }
                 } else {
-                    if (isfirstfailure==false){
-                        permission.onfirstfailure();
-                        isfirstfailure=true;
-                    }else {
-                        permission.onfailure();
-                    }
+                    permission.onfailure();
+                    maxpermission=0;
+                    return;
                 }
             }
 

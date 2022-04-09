@@ -26,9 +26,6 @@ public class MainActivity extends HQWActivity {
         HQWPermissions(PERMISSIONS,new permission() {
             @Override
             public void onsucceed() {
-            }
-            @Override
-            public void onfirstfailure() {
 
             }
             @Override
