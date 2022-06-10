@@ -1,6 +1,8 @@
 package com.huanqi.hqw.Utils;
 
+import java.lang.reflect.Method;
 import java.util.Locale;
+import java.util.UUID;
 
 import android.R.string;
 import android.content.Context;
@@ -12,16 +14,42 @@ import android.util.Log;
  */
 public class HQWDeviceInfoUtil {
 
-    //获取设备宽度px
+    /**
+     * 获取设备宽度px
+     * **/
     public static int getDeviceWidth(Context context) {
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    //获取设备高度px
+    /**
+     * 获取设备高度px
+     * **/
     public static int getDeviceHeight(Context context) {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 
+
+    /**
+     * 获取UUID
+     * **/
+    public static String getUUID() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
+    }
+
+    /**
+     * 获取序列号
+     * **/
+    public static String getSerialNumber(){
+        String serial = null;
+        try {
+            Class<?> c =Class.forName("android.os.SystemProperties");
+            Method get =c.getMethod("get", String.class);
+            serial = (String)get.invoke(c, "ro.serialno");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return serial;
+    }
 
     /**
      * 获取厂商名

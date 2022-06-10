@@ -25,6 +25,9 @@ import java.text.DecimalFormat;
  */
 public class HQWFileUtil {
 
+    /**
+     * 创建普通文件
+     */
     public static File File(String catalogue,String filename){
         File filecatalogue=new File(catalogue);
         if (!filecatalogue.exists()){
@@ -34,6 +37,9 @@ public class HQWFileUtil {
         return fileentire;
     }
 
+    /**
+     * 创建SD卡文件
+     */
     public static File SDFile(String catalogue,String filename){ //catalogue格式为  /电影   filename格式为 喜洋洋.mp4
         File filecatalogue=new File(Environment.getExternalStorageDirectory()+catalogue);
         if (!filecatalogue.exists()){

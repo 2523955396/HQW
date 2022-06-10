@@ -1,14 +1,23 @@
 package com.huanqi.hqw;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 import com.huanqi.hqw.Utils.HQWDeviceInfoUtil;
+import com.huanqi.hqw.Utils.HQWImageUtil;
 import com.huanqi.hqw.Utils.HQWLogUtil;
+import com.huanqi.hqw.Utils.HQWMd5Util;
 import com.huanqi.hqw.Utils.HQWSDCardUtil;
 import com.huanqi.hqw.activity.HQWActivity;
+import com.huanqi.hqw.dialog.HQWDialog;
 
 import java.util.Timer;
 import java.util.TimerTask;
