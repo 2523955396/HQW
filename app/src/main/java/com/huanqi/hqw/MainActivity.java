@@ -35,7 +35,6 @@ public class MainActivity extends HQWActivity {
         HQWPermissions(PERMISSIONS,new permission() {
             @Override
             public void onsucceed() {
-
             }
             @Override
             public void onfailure() {
@@ -43,4 +42,5 @@ public class MainActivity extends HQWActivity {
             }
         });
     }
+
 }
