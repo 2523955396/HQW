@@ -15,7 +15,7 @@ repositories {
 ```
 build.gradle
 ```
-implementation 'com.gitee.BAILIS:HQW:'version'
+implementation 'com.gitee.BAILIS:HQW:version'
 ```
 #### 准备进行and进行中的计划
 1. 简易封装各组件,达成最简化
