@@ -23,19 +23,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends HQWActivity {
-   String[] PERMISSIONS=new String[]{
-           Manifest.permission.WRITE_EXTERNAL_STORAGE,
-           Manifest.permission.READ_EXTERNAL_STORAGE,
-           Manifest.permission.ACCESS_COARSE_LOCATION
-   };
+    String[] PERMISSIONS = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        HQWPermissions(PERMISSIONS,new permission() {
+        HQWPermissions(PERMISSIONS, new permission() {
             @Override
             public void onsucceed() {
             }
+
             @Override
             public void onfailure() {
 
