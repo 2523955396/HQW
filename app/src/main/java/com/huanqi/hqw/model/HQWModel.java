@@ -15,7 +15,6 @@ public class HQWModel {
     }
     public void onCreate(HQWActivity activity) {
     }
-
     public void onPause() {
     }
     public void onRestart() {

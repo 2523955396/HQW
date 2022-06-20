@@ -2,7 +2,7 @@ package com.huanqi.hqw.http;
 
 import androidx.annotation.NonNull;
 
-import com.huanqi.hqw.Interface.File_download;
+import com.huanqi.hqw.Interface.FileDownloadCallBack;
 import com.huanqi.hqw.bean.DownloadFileBean;
 import com.huanqi.hqw.Utils.HQWFileUtil;
 
@@ -21,7 +21,7 @@ import okio.BufferedSink;
 import okio.Okio;
 
 public class HQWHttp {
-    public static void DownloadFile(String url, File file, File_download file_download) {
+    public static void DownloadFile(String url, File file, FileDownloadCallBack callBack) {
         OkHttpClient okHttpClient = new OkHttpClient();
 //        okHttpClient.newBuilder().readTimeout(1, TimeUnit.MINUTES);
 //        okHttpClient.newBuilder().writeTimeout(1, TimeUnit.MINUTES);
@@ -33,7 +33,7 @@ public class HQWHttp {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                file_download.onfailed();
+                callBack.onfailed();
             }
 
             @Override
@@ -49,25 +49,25 @@ public class HQWHttp {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        file_download.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
-                        file_download.onsuccess(file, "下载中");
+                        callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
+                        callBack.onsuccess(file, "下载中");
 
                     }
                 }, 0, 1000);
-                file_download.console(downloadFileBean);
+                callBack.console(downloadFileBean);
                 sink.writeAll(responseBody.source());
                 //下载完成执行
                 downloadFileBean.cancel();
-                file_download.onsuccess(file, "下载完成");
+                callBack.onsuccess(file, "下载完成");
             }
         });
     }
 
-    public static void HttpDownloadFile(Call call, String url, File file, File_download file_download) {
+    public static void HttpDownloadFile(Call call, String url, File file, FileDownloadCallBack callBack) {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                file_download.onfailed();
+                callBack.onfailed();
             }
 
             @Override
@@ -83,16 +83,16 @@ public class HQWHttp {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        file_download.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
-                        file_download.onsuccess(file, "下载中");
+                        callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
+                        callBack.onsuccess(file, "下载中");
 
                     }
                 }, 0, 1000);
-                file_download.console(downloadFileBean);
+                callBack.console(downloadFileBean);
                 sink.writeAll(responseBody.source());
                 //下载完成执行
                 downloadFileBean.cancel();
-                file_download.onsuccess(file, "下载完成");
+                callBack.onsuccess(file, "下载完成");
             }
         });
     }
