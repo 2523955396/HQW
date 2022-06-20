@@ -28,15 +28,5 @@
 <!--        </activity>-->
     </application>
 
-    <provider
-        android:name="androidx.core.content.FileProvider"
-        android:authorities="${applicationId}.fileProvider"
-        android:exported="false"
-        android:grantUriPermissions="true"
-        tools:ignore="WrongManifestParent">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths" />
-    </provider>
 
 </manifest>
