@@ -13,10 +13,14 @@ import androidx.annotation.Nullable;
 import com.huanqi.hqw.R;
 
 public class HQWDialog extends Dialog {
+    View view;
 
-    public HQWDialog(@NonNull Context context,int layout) {
+    public View getView() {
+        return view;
+    }
+    public HQWDialog(@NonNull Context context, int layout) {
         super(context);
-        View view = LayoutInflater.from(context).inflate(layout, null);
+        view = LayoutInflater.from(context).inflate(layout, null);
         setContentView(view);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.color.transparency);
