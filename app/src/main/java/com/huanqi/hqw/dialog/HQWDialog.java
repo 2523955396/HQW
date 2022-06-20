@@ -11,8 +11,18 @@ import androidx.annotation.Nullable;
 import com.huanqi.hqw.R;
 
 public class HQWDialog extends Dialog {
+
+
     public HQWDialog(@NonNull Context context) {
-        super(context, R.style.Theme_HQW_Dialog);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);//去除背景阴影
+        super(context);
     }
+
+    /**
+     * 去除背景阴影
+     */
+    public void removeshadow(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+    }
+
+
 }

@@ -6,6 +6,15 @@ import android.view.View;
 import com.huanqi.hqw.activity.HQWActivity;
 
 public class HQWModel {
+    HQWActivity activity;
+    View view;
+    public HQWActivity getActivity() {
+        return activity;
+    }
+
+    public View getView() {
+        return view;
+    }
 
     public void onCreate() {
     }
