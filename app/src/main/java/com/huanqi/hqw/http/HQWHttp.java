@@ -28,46 +28,46 @@ import okio.Okio;
  * 网络传输类 By焕奇灵动
  */
 public class HQWHttp {
-    private static int DOWNLOADING=1;//下载中
-    private static int COMPLETE=2;//下载完成
-    private  boolean IsDownloading=false;//是否正在下载
-    private Call call;
-    private BufferedSink bufferedSink;
-    private Timer timer;
-    private Response response;
-    private InputStream inputStream;
-    private FileOutputStream fileOutputStream;
+    public static int DOWNLOADING = 1;//下载中
+    public static int COMPLETE = 2;//下载完成
+    public boolean IsDownloading = false;//是否正在下载
+    public Call call;
+    public BufferedSink bufferedSink;
+    public Timer timer;
+    public Response response;
+    public InputStream inputStream;
+    public FileOutputStream fileOutputStream;
 
 
-    private void setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
     }
 
-    private void setTimer(Timer timer) {
+    public void setTimer(Timer timer) {
         this.timer = timer;
     }
 
-    private void setCall(Call call) {
+    public void setCall(Call call) {
         this.call = call;
     }
 
-    private void setBufferedSink(BufferedSink bufferedSink) {
+    public void setBufferedSink(BufferedSink bufferedSink) {
         this.bufferedSink = bufferedSink;
     }
 
-    private void setFileOutputStream(FileOutputStream fileOutputStream) {
+    public void setFileOutputStream(FileOutputStream fileOutputStream) {
         this.fileOutputStream = fileOutputStream;
     }
 
-    private void setDownloading(boolean downloading) {
+    public void setDownloading(boolean downloading) {
         IsDownloading = downloading;
     }
 
-    private boolean isDownloading() {
+    public boolean isDownloading() {
         return IsDownloading;
     }
 
-    private void setInputStream(InputStream inputStream) {
+    public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
     }
 
@@ -78,7 +78,7 @@ public class HQWHttp {
      * calltime 返回调用时间 单位1000=1秒
      * callBack调用回调
      */
-    private  void DownloadFile(String url, File file, int calltime, FileDownloadCallBack callBack) {
+    public void DownloadFile(String url, File file, int calltime, FileDownloadCallBack callBack) {
         OkHttpClient okHttpClient = new OkHttpClient();
 //        okHttpClient.newBuilder().readTimeout(1, TimeUnit.MINUTES);
 //        okHttpClient.newBuilder().writeTimeout(1, TimeUnit.MINUTES);
@@ -127,7 +127,7 @@ public class HQWHttp {
      * calltime 返回调用时间 单位1000=1秒
      * callBack调用回调
      */
-    private  void CallDownloadFile(Call call, String url, File file,int calltime, FileDownloadCallBack callBack) {
+    public void CallDownloadFile(Call call, String url, File file, int calltime, FileDownloadCallBack callBack) {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -164,23 +164,23 @@ public class HQWHttp {
     /**
      * 下载功能关闭清空
      */
-    private void cancel(){
+    public void cancel() {
         try {
-            if (call!=null){
+            if (call != null) {
                 call.cancel();
             }
-            if (bufferedSink.isOpen()){
+            if (bufferedSink.isOpen()) {
                 bufferedSink.flush();
                 bufferedSink.close();
             }
-            if (timer!=null){
+            if (timer != null) {
                 timer.cancel();
             }
-            if (response!=null){
+            if (response != null) {
                 response.close();
             }
             setDownloading(false);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -192,7 +192,7 @@ public class HQWHttp {
      * calltime 返回调用时间 单位1000=1秒
      * callBack调用回调
      */
-    private void DownloadFileResume(String url, File file,int calltime, FileDownloadCallBack callBack){
+    public void DownloadFileResume(String url, File file, int calltime, FileDownloadCallBack callBack) {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
@@ -202,18 +202,19 @@ public class HQWHttp {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 callBack.onfailed();
             }
+
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                long maxlength=response.body().contentLength();
+                long maxlength = response.body().contentLength();
                 call.cancel();
                 response.close();
                 Request request;
-                if (file.exists()){
+                if (file.exists()) {
                     request = new Request.Builder()
                             .addHeader("RANGE", "bytes=" + file.length() + "-")
                             .url(url)
                             .build();
-                }else {
+                } else {
                     request = new Request.Builder()
                             .url(url)
                             .build();
@@ -229,8 +230,8 @@ public class HQWHttp {
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                         ResponseBody responseBody = response.body();
-                        if (file.length()>=maxlength){
-                            HQWLogUtil.logi("下载",file.length()+"   "+maxlength+"");
+                        if (file.length() >= maxlength) {
+                            HQWLogUtil.logi("下载", file.length() + "   " + maxlength + "");
                             cancelResume();
                             callBack.onsuccess(file, COMPLETE);
                             return;
@@ -258,11 +259,11 @@ public class HQWHttp {
                         byte[] bytes = new byte[2048];
                         int len = 0;
                         while ((len = inputStream.read(bytes)) != -1) {
-                            if (fileOutputStream!=null){
+                            if (fileOutputStream != null) {
                                 fileOutputStream.write(bytes, 0, len);
                                 tmpLength += len;
-                            }else {
-                                HQWLogUtil.logi("下载","结束");
+                            } else {
+                                HQWLogUtil.logi("下载", "结束");
                                 cancelResume();
                             }
                         }
@@ -276,36 +277,32 @@ public class HQWHttp {
     }
 
 
-
-
     /**
      * 断点续传下载功能关闭清空
      */
-    private void cancelResume(){
-    try {
-        if (call!=null){
-            call.cancel();
+    public void cancelResume() {
+        try {
+            if (call != null) {
+                call.cancel();
+            }
+            if (timer != null) {
+                timer.cancel();
+            }
+            if (response != null) {
+                response.close();
+            }
+            if (fileOutputStream != null) {
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            }
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            setDownloading(false);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if (timer!=null){
-            timer.cancel();
-        }
-        if (response!=null){
-            response.close();
-        }
-        if (fileOutputStream!=null){
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        }
-        if (inputStream!=null){
-            inputStream.close();
-        }
-        setDownloading(false);
-    }catch (Exception e){
-        e.printStackTrace();
     }
-}
-
-
 
 
 }
