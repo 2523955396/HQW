@@ -231,7 +231,6 @@ public class HQWHttp {
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                         ResponseBody responseBody = response.body();
                         if (file.length() >= maxlength) {
-                            HQWLogUtil.logi("下载", file.length() + "   " + maxlength + "");
                             cancelResume();
                             callBack.onsuccess(file, COMPLETE);
                             return;
@@ -249,7 +248,7 @@ public class HQWHttp {
                         timer.schedule(new TimerTask() {
                             @Override
                             public void run() {
-                                callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
+                                callBack.progress(file.length(), maxlength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(maxlength));
                                 callBack.onsuccess(file, DOWNLOADING);
 
                             }
