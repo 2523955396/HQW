@@ -114,6 +114,7 @@ public class HQWHttp {
                 bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
                 cancel();
+                callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                 callBack.onsuccess(file, COMPLETE);
                 setDownloading(false);
             }
@@ -155,6 +156,7 @@ public class HQWHttp {
                 bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
                 cancel();
+                callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                 callBack.onsuccess(file, COMPLETE);
                 setDownloading(false);
             }
@@ -250,7 +252,6 @@ public class HQWHttp {
                             public void run() {
                                 callBack.progress(file.length(), maxlength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(maxlength));
                                 callBack.onsuccess(file, DOWNLOADING);
-
                             }
                         }, 0, calltime);
 
@@ -262,11 +263,11 @@ public class HQWHttp {
                                 fileOutputStream.write(bytes, 0, len);
                                 tmpLength += len;
                             } else {
-                                HQWLogUtil.logi("下载", "结束");
                                 cancelResume();
                             }
                         }
                         cancelResume();
+                        callBack.progress(file.length(), maxlength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(maxlength));
                         callBack.onsuccess(file, COMPLETE);
                         setDownloading(false);
                     }
