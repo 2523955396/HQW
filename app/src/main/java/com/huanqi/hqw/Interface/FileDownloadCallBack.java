@@ -1,6 +1,5 @@
 package com.huanqi.hqw.Interface;
 
-import com.huanqi.hqw.bean.DownloadFileBean;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import okio.BufferedSink;
 
 public interface FileDownloadCallBack {
     void progress(long ProgressSize,long MaxSize,String HQWProgressSize,String HQWMaxSize);
-    void onsuccess(File file,String state);
+    void onsuccess(File file,int state);
     void onfailed();
-    void console(DownloadFileBean downloadFileBean);
 }

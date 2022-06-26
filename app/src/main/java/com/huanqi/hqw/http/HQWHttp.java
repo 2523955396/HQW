@@ -1,13 +1,17 @@
 package com.huanqi.hqw.http;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.huanqi.hqw.Interface.FileDownloadCallBack;
-import com.huanqi.hqw.bean.DownloadFileBean;
 import com.huanqi.hqw.Utils.HQWFileUtil;
+import com.huanqi.hqw.Utils.HQWLogUtil;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,8 +24,61 @@ import okhttp3.ResponseBody;
 import okio.BufferedSink;
 import okio.Okio;
 
+/**
+ * 网络传输类 By焕奇灵动
+ */
 public class HQWHttp {
-    public static void DownloadFile(String url, File file, FileDownloadCallBack callBack) {
+    private static int DOWNLOADING=1;//下载中
+    private static int COMPLETE=2;//下载完成
+    private  boolean IsDownloading=false;//是否正在下载
+    private Call call;
+    private BufferedSink bufferedSink;
+    private Timer timer;
+    private Response response;
+    private InputStream inputStream;
+    private FileOutputStream fileOutputStream;
+
+
+    private void setResponse(Response response) {
+        this.response = response;
+    }
+
+    private void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    private void setCall(Call call) {
+        this.call = call;
+    }
+
+    private void setBufferedSink(BufferedSink bufferedSink) {
+        this.bufferedSink = bufferedSink;
+    }
+
+    private void setFileOutputStream(FileOutputStream fileOutputStream) {
+        this.fileOutputStream = fileOutputStream;
+    }
+
+    private void setDownloading(boolean downloading) {
+        IsDownloading = downloading;
+    }
+
+    private boolean isDownloading() {
+        return IsDownloading;
+    }
+
+    private void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    /**
+     * 下载功能
+     * url 超链接
+     * file 文件保存地址
+     * calltime 返回调用时间 单位1000=1秒
+     * callBack调用回调
+     */
+    private  void DownloadFile(String url, File file, int calltime, FileDownloadCallBack callBack) {
         OkHttpClient okHttpClient = new OkHttpClient();
 //        okHttpClient.newBuilder().readTimeout(1, TimeUnit.MINUTES);
 //        okHttpClient.newBuilder().writeTimeout(1, TimeUnit.MINUTES);
@@ -39,31 +96,38 @@ public class HQWHttp {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 ResponseBody responseBody = response.body();
-                BufferedSink sink = Okio.buffer(Okio.sink(file));
+                BufferedSink bufferedSink = Okio.buffer(Okio.sink(file));
                 Timer timer = new Timer();
-                DownloadFileBean downloadFileBean = new DownloadFileBean();
-                downloadFileBean.setCall(call);
-                downloadFileBean.setSink(sink);
-                downloadFileBean.setTimer(timer);
-                downloadFileBean.setResponse(response);
+                setCall(call);
+                setResponse(response);
+                setBufferedSink(bufferedSink);
+                setTimer(timer);
+                setDownloading(true);
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
                         callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
-                        callBack.onsuccess(file, "下载中");
+                        callBack.onsuccess(file, DOWNLOADING);
 
                     }
-                }, 0, 1000);
-                callBack.console(downloadFileBean);
-                sink.writeAll(responseBody.source());
+                }, 0, calltime);
+                bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
-                downloadFileBean.cancel();
-                callBack.onsuccess(file, "下载完成");
+                cancel();
+                callBack.onsuccess(file, COMPLETE);
+                setDownloading(false);
             }
         });
     }
 
-    public static void HttpDownloadFile(Call call, String url, File file, FileDownloadCallBack callBack) {
+    /**
+     * 下载功能
+     * url 超链接
+     * file 文件保存地址
+     * calltime 返回调用时间 单位1000=1秒
+     * callBack调用回调
+     */
+    private  void CallDownloadFile(Call call, String url, File file,int calltime, FileDownloadCallBack callBack) {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -73,27 +137,175 @@ public class HQWHttp {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 ResponseBody responseBody = response.body();
-                BufferedSink sink = Okio.buffer(Okio.sink(file));
+                BufferedSink bufferedSink = Okio.buffer(Okio.sink(file));
                 Timer timer = new Timer();
-                DownloadFileBean downloadFileBean = new DownloadFileBean();
-                downloadFileBean.setCall(call);
-                downloadFileBean.setSink(sink);
-                downloadFileBean.setTimer(timer);
-                downloadFileBean.setResponse(response);
+                setCall(call);
+                setResponse(response);
+                setBufferedSink(bufferedSink);
+                setTimer(timer);
+                setDownloading(true);
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
                         callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
-                        callBack.onsuccess(file, "下载中");
+                        callBack.onsuccess(file, DOWNLOADING);
 
                     }
-                }, 0, 1000);
-                callBack.console(downloadFileBean);
-                sink.writeAll(responseBody.source());
+                }, 0, calltime);
+                bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
-                downloadFileBean.cancel();
-                callBack.onsuccess(file, "下载完成");
+                cancel();
+                callBack.onsuccess(file, COMPLETE);
+                setDownloading(false);
             }
         });
     }
+
+    /**
+     * 下载功能关闭清空
+     */
+    private void cancel(){
+        try {
+            if (call!=null){
+                call.cancel();
+            }
+            if (bufferedSink.isOpen()){
+                bufferedSink.flush();
+                bufferedSink.close();
+            }
+            if (timer!=null){
+                timer.cancel();
+            }
+            if (response!=null){
+                response.close();
+            }
+            setDownloading(false);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 断点续传 下载功能
+     * url 超链接
+     * file 文件保存地址
+     * calltime 返回调用时间 单位1000=1秒
+     * callBack调用回调
+     */
+    private void DownloadFileResume(String url, File file,int calltime, FileDownloadCallBack callBack){
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                callBack.onfailed();
+            }
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                long maxlength=response.body().contentLength();
+                call.cancel();
+                response.close();
+                Request request;
+                if (file.exists()){
+                    request = new Request.Builder()
+                            .addHeader("RANGE", "bytes=" + file.length() + "-")
+                            .url(url)
+                            .build();
+                }else {
+                    request = new Request.Builder()
+                            .url(url)
+                            .build();
+                }
+                OkHttpClient okHttpClient = new OkHttpClient();
+                Call newcall = okHttpClient.newCall(request);
+                newcall.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        callBack.onfailed();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        ResponseBody responseBody = response.body();
+                        if (file.length()>=maxlength){
+                            HQWLogUtil.logi("下载",file.length()+"   "+maxlength+"");
+                            cancelResume();
+                            callBack.onsuccess(file, COMPLETE);
+                            return;
+                        }
+
+                        Timer timer = new Timer();
+                        InputStream inputStream = responseBody.byteStream();
+                        FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                        setCall(newcall);
+                        setResponse(response);
+                        setTimer(timer);
+                        setFileOutputStream(fileOutputStream);
+                        setInputStream(inputStream);
+                        setDownloading(true);
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
+                                callBack.onsuccess(file, DOWNLOADING);
+
+                            }
+                        }, 0, calltime);
+
+                        long tmpLength = 0;
+                        byte[] bytes = new byte[2048];
+                        int len = 0;
+                        while ((len = inputStream.read(bytes)) != -1) {
+                            if (fileOutputStream!=null){
+                                fileOutputStream.write(bytes, 0, len);
+                                tmpLength += len;
+                            }else {
+                                HQWLogUtil.logi("下载","结束");
+                                cancelResume();
+                            }
+                        }
+                        cancelResume();
+                        callBack.onsuccess(file, COMPLETE);
+                        setDownloading(false);
+                    }
+                });
+            }
+        });
+    }
+
+
+
+
+    /**
+     * 断点续传下载功能关闭清空
+     */
+    private void cancelResume(){
+    try {
+        if (call!=null){
+            call.cancel();
+        }
+        if (timer!=null){
+            timer.cancel();
+        }
+        if (response!=null){
+            response.close();
+        }
+        if (fileOutputStream!=null){
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        }
+        if (inputStream!=null){
+            inputStream.close();
+        }
+        setDownloading(false);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+}
+
+
+
+
 }
