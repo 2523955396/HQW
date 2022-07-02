@@ -1,5 +1,6 @@
 package com.huanqi.hqw.model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import com.huanqi.hqw.activity.HQWActivity;
 
 public class HQWModel {
     HQWActivity hqwActivity;
+    Activity activity;
     View view;
     Context context;
     public HQWActivity getHqwActivity() {
@@ -31,7 +33,19 @@ public class HQWModel {
     public Context getContext() {
         return context;
     }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
     public void onCreate() {
+    }
+    public void onCreate(Activity activity) {
+        this.activity=activity;
     }
     public void onCreate(View view) {
         this.view=view;
