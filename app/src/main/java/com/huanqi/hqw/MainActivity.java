@@ -21,6 +21,7 @@ import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.Utils.HQWMd5Util;
 import com.huanqi.hqw.Utils.HQWSDCardUtil;
 import com.huanqi.hqw.activity.HQWActivity;
+import com.huanqi.hqw.animation.HQWAnimation;
 import com.huanqi.hqw.dialog.HQWDialog;
 import com.huanqi.hqw.http.HQWHttp;
 
@@ -42,6 +43,7 @@ public class MainActivity extends HQWActivity{
         HQWPermissions(PERMISSIONS, new permission() {
             @Override
             public void onsucceed() {
+                initView();
             }
 
             @Override
@@ -51,4 +53,12 @@ public class MainActivity extends HQWActivity{
         });
     }
 
+    @Override
+    public void initView() {
+        super.initView();
+        Button button=findViewById(R.id.xiazai);
+        button.setOnClickListener(v -> {
+            HQWAnimation.WidghtRotateXY(button,true,0f,90f,1000);
+        });
+    }
 }

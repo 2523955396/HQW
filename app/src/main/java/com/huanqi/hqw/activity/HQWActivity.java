@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -148,4 +149,12 @@ public class HQWActivity extends AppCompatActivity {
             window.getDecorView().setSystemUiVisibility(textcolor);//状态栏字体颜色
         }
     }
+
+    public void initView(){
+
+    }
+    public void initData(){
+
+    }
+
 }

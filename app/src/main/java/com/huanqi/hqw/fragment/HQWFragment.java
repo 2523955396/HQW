@@ -87,4 +87,12 @@ public class HQWFragment extends Fragment {
             getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
         }
     }
+
+
+    public void initView(){
+
+    }
+    public void initData(){
+
+    }
 }

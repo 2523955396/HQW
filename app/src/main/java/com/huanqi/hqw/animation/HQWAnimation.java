@@ -7,9 +7,18 @@ import android.view.animation.Transformation;
 
 import com.huanqi.hqw.Utils.HQWWeightUtil;
 
+/**
+ * 动画类 By焕奇灵动
+ */
 public class HQWAnimation {
 
-    //平移动画
+    /**
+     * 平移
+     * view
+     * XorY true横向平移 Y纵向平移
+     * f 平移多少px
+     * time 时间 毫秒1:1000
+     */
     public static void WidghtMoveXY(View view,boolean XorY,Float f,int time){
         ObjectAnimator animation;
         if (XorY){
@@ -21,8 +30,29 @@ public class HQWAnimation {
         animation.start();
     }
 
-    //Apater删除动画
-    private void ViewDelte(final View view, Animation.AnimationListener animationListener) {
+    /**
+     * 旋转动画
+     * view
+     * XorY true纵向旋转 false横向旋转
+     * f 旋转的开始角度
+     * ff 旋转的结束角度
+     * time 时间 毫秒1:1000
+     */
+    public static void WidghtRotateXY(View view,boolean XorY,Float f,Float ff,int time){
+        ObjectAnimator animation;
+        if (XorY){
+            animation = ObjectAnimator.ofFloat(view, "rotationX", f,ff);
+        }else {
+            animation = ObjectAnimator.ofFloat(view, "rotationY", f,ff);
+        }
+        animation.setDuration(time);
+        animation.start();
+    }
+
+    /**
+     * Apater删除动画，从下往上收缩
+     */
+    private static void ViewDelte(final View view, Animation.AnimationListener animationListener) {
         final int originHeight = view.getMeasuredHeight();
         Animation animation = new Animation() {
             @Override

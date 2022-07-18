@@ -140,4 +140,12 @@ public class HQWOActivity extends Activity {
             window.getDecorView().setSystemUiVisibility(textcolor);//状态栏字体颜色
         }
     }
+
+
+    public void initView(){
+
+    }
+    public void initData(){
+
+    }
 }
