@@ -28,8 +28,8 @@ import okio.Okio;
  * 网络传输类 By焕奇灵动
  */
 public class HQWHttp {
-    public static int DOWNLOADING = 1;//下载中
-    public static int COMPLETE = 2;//下载完成
+    public static final int DOWNLOADING = 1;//下载中
+    public static final int COMPLETE = 2;//下载完成
     public boolean IsDownloading = false;//是否正在下载
     public Call call;
     public BufferedSink bufferedSink;
@@ -128,7 +128,7 @@ public class HQWHttp {
      * calltime 返回调用时间 单位1000=1秒
      * callBack调用回调
      */
-    public void CallDownloadFile(Call call, String url, File file, int calltime, FileDownloadCallBack callBack) {
+    public void CallDownloadFile(Call call, File file, int calltime, FileDownloadCallBack callBack) {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
