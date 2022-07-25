@@ -71,6 +71,17 @@ public class HQWHttp {
         this.inputStream = inputStream;
     }
 
+    public static HQWHttp FileDownload(String url, File file, int calltime, FileDownloadCallBack callBack){
+        HQWHttp hqwHttp=new HQWHttp();
+        hqwHttp.DownloadFile(url,file,calltime,callBack);
+        return hqwHttp;
+    }
+    public static HQWHttp FileResumeDownload(String url, File file, int calltime, FileDownloadCallBack callBack){
+        HQWHttp hqwHttp=new HQWHttp();
+        hqwHttp.DownloadFileResume(url,file,calltime,callBack);
+        return hqwHttp;
+    }
+
     /**
      * 下载功能
      * url 超链接
@@ -90,7 +101,7 @@ public class HQWHttp {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                callBack.onfailed();
+                callBack.onfailed(call,e);
             }
 
             @Override
@@ -132,7 +143,7 @@ public class HQWHttp {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                callBack.onfailed();
+                callBack.onfailed(call,e);
             }
 
             @Override
@@ -202,7 +213,7 @@ public class HQWHttp {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                callBack.onfailed();
+                callBack.onfailed(call,e);
             }
 
             @Override
@@ -226,7 +237,7 @@ public class HQWHttp {
                 newcall.enqueue(new Callback() {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        callBack.onfailed();
+                        callBack.onfailed(call,e);
                     }
 
                     @Override
