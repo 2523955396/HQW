@@ -86,4 +86,11 @@ public class HQWModel {
     }
     public void onDestroy() {
     }
+
+    public void initView(){
+
+    }
+    public void initData(){
+
+    }
 }
