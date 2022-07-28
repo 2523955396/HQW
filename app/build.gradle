@@ -1,13 +1,13 @@
 plugins {
-    id 'com.android.library'
-//    id 'com.android.application'
+//    id 'com.android.library'
+    id 'com.android.application'
 }
 
 android {
     compileSdk 32
 
     defaultConfig {
-//        applicationId "com.huanqi.hqw"
+        applicationId "com.huanqi.hqw"
         minSdk 21
         targetSdk 32
         versionCode 1

@@ -16,6 +16,9 @@ import androidx.core.content.ContextCompat;
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HQWOActivity extends Activity {
     Toast toast;
     int maxpermission = 0;//权限授权了多少个
@@ -96,6 +99,23 @@ public class HQWOActivity extends Activity {
     public void HQWPermissions(String[] permissions, com.huanqi.hqw.Interface.permission permission) {
         requestPermissions(permissions, 777);
         this.permission = permission;
+    }
+
+    public boolean HQWISPermission(String permission) {
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED)
+            return true;
+        else
+            return false;
+    }
+    public List<Boolean> HQWISPermissions(String[] permissions) {
+        List<Boolean> booleans=new ArrayList<>();
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED)
+                booleans.add(true);
+            else
+                booleans.add(false);
+        }
+        return booleans;
     }
 
     @Override

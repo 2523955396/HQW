@@ -28,6 +28,8 @@ import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class HQWActivity extends AppCompatActivity {
@@ -106,18 +108,18 @@ public class HQWActivity extends AppCompatActivity {
 
     }
 
-    ActivityResultLauncher<String[]> resultLauncherpermission=registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
+    ActivityResultLauncher<String[]> resultLauncherpermission = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
         @Override
         public void onActivityResult(Map<String, Boolean> result) {
-            boolean ISNICE=true;
-            for (Map.Entry<String,Boolean> maps:result.entrySet()){
-                if (maps.getValue()==false){
-                    ISNICE=false;
+            boolean ISNICE = true;
+            for (Map.Entry<String, Boolean> maps : result.entrySet()) {
+                if (maps.getValue() == false) {
+                    ISNICE = false;
                 }
             }
-            if (ISNICE){
+            if (ISNICE) {
                 permission.onsucceed();
-            }else {
+            } else {
                 permission.onfailure();
             }
         }
@@ -129,6 +131,25 @@ public class HQWActivity extends AppCompatActivity {
         this.permission = permission;
         resultLauncherpermission.launch(permissions);
     }
+
+    public boolean HQWISPermission(String permission) {
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED)
+            return true;
+        else
+            return false;
+    }
+    public List<Boolean> HQWISPermissions(String[] permissions) {
+        List<Boolean> booleans=new ArrayList<>();
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED)
+                booleans.add(true);
+            else
+                booleans.add(false);
+        }
+        return booleans;
+    }
+
+
 
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -174,10 +195,11 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void initView(){
+    public void initView() {
 
     }
-    public void initData(){
+
+    public void initData() {
 
     }
 

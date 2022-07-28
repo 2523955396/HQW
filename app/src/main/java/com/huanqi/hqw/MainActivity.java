@@ -46,9 +46,11 @@ public class MainActivity extends HQWActivity {
             @Override
             public void onsucceed() {
                 initView();
+                setToast(""+HQWISPermission(PERMISSIONS[2]));
             }
             @Override
             public void onfailure() {
+                setToast(""+HQWISPermissions(PERMISSIONS).toString());
             }
         });
     }
