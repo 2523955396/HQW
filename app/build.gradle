@@ -54,4 +54,5 @@ dependencies {
 
     //动画库
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+
 }

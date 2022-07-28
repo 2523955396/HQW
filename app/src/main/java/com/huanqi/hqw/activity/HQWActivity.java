@@ -15,6 +15,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -24,6 +27,8 @@ import androidx.core.content.ContextCompat;
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
+
+import java.util.Map;
 
 public class HQWActivity extends AppCompatActivity {
     Toast toast;
@@ -101,31 +106,49 @@ public class HQWActivity extends AppCompatActivity {
 
     }
 
-
-    public void HQWPermissions(String[] permissions, com.huanqi.hqw.Interface.permission permission) {
-        requestPermissions(permissions, 777);
-        this.permission = permission;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 777) {
-            for (int i = 0; i < permissions.length; i++) {
-                if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED) {
-                    maxpermission++;
-                    if (maxpermission == permissions.length) {
-                        permission.onsucceed();
-                    }
-                } else {
-                    permission.onfailure();
-                    maxpermission = 0;
-                    return;
+    ActivityResultLauncher<String[]> resultLauncherpermission=registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
+        @Override
+        public void onActivityResult(Map<String, Boolean> result) {
+            boolean ISNICE=true;
+            for (Map.Entry<String,Boolean> maps:result.entrySet()){
+                if (maps.getValue()==false){
+                    ISNICE=false;
                 }
             }
-
+            if (ISNICE){
+                permission.onsucceed();
+            }else {
+                permission.onfailure();
+            }
         }
+    });
+
+
+    public void HQWPermissions(String[] permissions, permission permission) {
+//        requestPermissions(permissions, 777);
+        this.permission = permission;
+        resultLauncherpermission.launch(permissions);
     }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode == 777) {
+//            for (int i = 0; i < permissions.length; i++) {
+//                if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED) {
+//                    maxpermission++;
+//                    if (maxpermission == permissions.length) {
+//                        permission.onsucceed();
+//                    }
+//                } else {
+//                    permission.onfailure();
+//                    maxpermission = 0;
+//                    return;
+//                }
+//            }
+//
+//        }
+//    }
 
     public void HQWsetScreen(boolean islighting) {
         if (islighting) {
@@ -140,6 +163,7 @@ public class HQWActivity extends AppCompatActivity {
      * 列：Color.WHITE
      * 列：View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void HQWsetStatusBar(int color, int textcolor) {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
