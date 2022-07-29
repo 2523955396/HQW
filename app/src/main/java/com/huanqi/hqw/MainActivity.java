@@ -21,6 +21,7 @@ import com.huanqi.hqw.Utils.HQWImageUtil;
 import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.Utils.HQWMd5Util;
 import com.huanqi.hqw.Utils.HQWSDCardUtil;
+import com.huanqi.hqw.Utils.HQWWeightUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 import com.huanqi.hqw.animation.HQWAnimation;
 import com.huanqi.hqw.dialog.HQWDialog;
@@ -58,6 +59,7 @@ public class MainActivity extends HQWActivity {
         super.initView();
         Button button = findViewById(R.id.xiazai);
         Button zanting = findViewById(R.id.zanting);
+        HQWWeightUtil.showSystemNavigationBar(this);
     }
 
     @Override
