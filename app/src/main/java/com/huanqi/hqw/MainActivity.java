@@ -59,7 +59,6 @@ public class MainActivity extends HQWActivity {
         super.initView();
         Button button = findViewById(R.id.xiazai);
         Button zanting = findViewById(R.id.zanting);
-        HQWWeightUtil.showSystemNavigationBar(this);
     }
 
     @Override
