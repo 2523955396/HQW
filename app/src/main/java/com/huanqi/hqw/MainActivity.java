@@ -46,11 +46,10 @@ public class MainActivity extends HQWActivity {
             @Override
             public void onsucceed() {
                 initView();
-                setToast(""+HQWISPermission(PERMISSIONS[2]));
             }
             @Override
             public void onfailure() {
-                setToast(""+HQWISPermissions(PERMISSIONS).toString());
+
             }
         });
     }
@@ -59,5 +58,10 @@ public class MainActivity extends HQWActivity {
         super.initView();
         Button button = findViewById(R.id.xiazai);
         Button zanting = findViewById(R.id.zanting);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
     }
 }

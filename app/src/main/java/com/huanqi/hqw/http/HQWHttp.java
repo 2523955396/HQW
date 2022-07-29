@@ -37,6 +37,10 @@ public class HQWHttp {
     public Response response;
     public InputStream inputStream;
     public FileOutputStream fileOutputStream;
+    public static String murl;
+    public static File mfile;
+    public static int mcalltime;
+    public static FileDownloadCallBack mcallBack;
 
 
     public void setResponse(Response response) {
@@ -72,15 +76,42 @@ public class HQWHttp {
     }
 
     public static HQWHttp FileDownload(String url, File file, int calltime, FileDownloadCallBack callBack){
+        murl=url;
+        mfile=file;
+        mcalltime=calltime;
+        mcallBack=callBack;
         HQWHttp hqwHttp=new HQWHttp();
-        hqwHttp.DownloadFile(url,file,calltime,callBack);
         return hqwHttp;
     }
+
+    public void startFileDownload(){
+        DownloadFile(murl,mfile,mcalltime,mcallBack);
+    }
+    public void pauseFileDownload(){
+        cancelFileDownload();
+    }
+
+
+
     public static HQWHttp FileResumeDownload(String url, File file, int calltime, FileDownloadCallBack callBack){
+        murl=url;
+        mfile=file;
+        mcalltime=calltime;
+        mcallBack=callBack;
         HQWHttp hqwHttp=new HQWHttp();
-        hqwHttp.DownloadFileResume(url,file,calltime,callBack);
         return hqwHttp;
     }
+
+    public void startFileResumeDownload(){
+        DownloadFileResume(murl,mfile,mcalltime,mcallBack);
+    }
+    public void pauseFileResumeDownload(){
+        cancelFileResumeDownload();
+    }
+
+
+
+
 
     /**
      * 下载功能
@@ -124,7 +155,7 @@ public class HQWHttp {
                 }, 0, calltime);
                 bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
-                cancel();
+                cancelFileDownload();
                 callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                 callBack.onsuccess(file, COMPLETE);
                 setDownloading(false);
@@ -166,7 +197,7 @@ public class HQWHttp {
                 }, 0, calltime);
                 bufferedSink.writeAll(responseBody.source());
                 //下载完成执行
-                cancel();
+                cancelFileDownload();
                 callBack.progress(file.length(), responseBody.contentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(responseBody.contentLength()));
                 callBack.onsuccess(file, COMPLETE);
                 setDownloading(false);
@@ -177,7 +208,7 @@ public class HQWHttp {
     /**
      * 下载功能关闭清空
      */
-    public void cancel() {
+    public void cancelFileDownload() {
         try {
             if (call != null) {
                 call.cancel();
@@ -244,7 +275,7 @@ public class HQWHttp {
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                         ResponseBody responseBody = response.body();
                         if (file.length() >= maxlength) {
-                            cancelResume();
+                            cancelFileResumeDownload();
                             callBack.onsuccess(file, COMPLETE);
                             return;
                         }
@@ -274,10 +305,10 @@ public class HQWHttp {
                                 fileOutputStream.write(bytes, 0, len);
                                 tmpLength += len;
                             } else {
-                                cancelResume();
+                                cancelFileResumeDownload();
                             }
                         }
-                        cancelResume();
+                        cancelFileResumeDownload();
                         callBack.progress(file.length(), maxlength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(maxlength));
                         callBack.onsuccess(file, COMPLETE);
                         setDownloading(false);
@@ -291,7 +322,7 @@ public class HQWHttp {
     /**
      * 断点续传下载功能关闭清空
      */
-    public void cancelResume() {
+    public void cancelFileResumeDownload() {
         try {
             if (call != null) {
                 call.cancel();
