@@ -1,13 +1,22 @@
 package com.huanqi.hqw.Utils;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.os.AsyncTask;
 import android.text.TextUtils;
+
+import com.huanqi.hqw.Interface.Image.HttpImageBitmap;
+import com.huanqi.hqw.Interface.Image.HttpImageDrawable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.net.URL;
+import java.net.URLConnection;
 
 
 /**
@@ -55,4 +64,75 @@ public class HQWImageUtil {
         }
         newExif.saveAttributes();
     }
+
+    /**
+     *网络位图请求
+     */
+    public static Bitmap bitmap(String img) {
+        Bitmap bitmap = null;
+        try {
+            URL url = new URL(img);
+            URLConnection urlConnection = url.openConnection();
+
+            InputStream inputStream = urlConnection.getInputStream();
+            bitmap = BitmapFactory.decodeStream(inputStream);
+            return bitmap;
+        } catch (Exception v) {
+        }
+        return bitmap;
+    }
+
+    /**
+     *网络异步请求位图
+     */
+    public static void AsyncBitmap(String url, HttpImageBitmap httpImageBitmap){
+        new AsyncTask<String, String, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                return bitmap(url);
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+                httpImageBitmap.callback(bitmap);
+            }
+        }.execute();
+    }
+
+    /**
+     *网络绘制请求
+     */
+    public static Drawable drawable(String img){
+        Drawable drawable = null;
+        try {
+            URL url = new URL(img);
+            URLConnection urlConnection = url.openConnection();
+            InputStream inputStream = urlConnection.getInputStream();
+            drawable= Drawable.createFromStream(inputStream,null);
+            return drawable;
+        } catch (Exception v) {
+        }
+        return drawable;
+    }
+
+    /**
+     *网络异步请求绘制
+     */
+    public static void AsyncDrawable(String url,HttpImageDrawable httpImageDrawable){
+        new AsyncTask<String, String, Drawable>() {
+            @Override
+            protected Drawable doInBackground(String... strings) {
+                return drawable(url);
+            }
+
+            @Override
+            protected void onPostExecute(Drawable drawable) {
+                super.onPostExecute(drawable);
+                httpImageDrawable.callback(drawable);
+            }
+        }.execute();
+    }
+
+
 }

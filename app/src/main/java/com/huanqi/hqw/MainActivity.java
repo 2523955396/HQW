@@ -2,6 +2,7 @@ package com.huanqi.hqw;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -9,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.huanqi.hqw.Interface.FileDownloadCallBack;
+import com.huanqi.hqw.Interface.Image.HttpImageBitmap;
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 import com.huanqi.hqw.Utils.HQWDeviceInfoUtil;
@@ -39,6 +42,7 @@ public class MainActivity extends HQWActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,6 @@ public class MainActivity extends HQWActivity {
     @Override
     public void initView() {
         super.initView();
-        Button button = findViewById(R.id.xiazai);
-        Button zanting = findViewById(R.id.zanting);
     }
 
     @Override

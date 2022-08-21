@@ -8,29 +8,5 @@
     tools:context=".MainActivity"
     android:gravity="center"
     >
-    <TextView
-        android:id="@+id/yonghu1xieyi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="少时诵诗书所">
-
-    </TextView>
-
-    <Button
-        android:id="@+id/xiazai"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="下载"></Button>
-    <Button
-        android:id="@+id/zanting"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="暂停"></Button>
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal">
-    </ProgressBar>
 
 </LinearLayout>
