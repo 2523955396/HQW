@@ -5,6 +5,10 @@ import android.util.AttributeSet;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * 使用的记得HQWRecyclerView.setNestedScrollingEnabled(false);不然还是冲突
+ */
+
 public class HQWRecyclerView extends RecyclerView {
     public HQWRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
