@@ -50,6 +50,25 @@ public class HQWFileUtil {
     }
 
     /**
+     * 删除所有文件
+     */
+    public void deleteFile(File file) {
+        if (file.exists()) {
+            if (file.isFile()) {
+                file.delete();
+            } else if (file.isDirectory()) {
+                File files[] = file.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    deleteFile(files[i]);
+                }
+            }
+            file.delete();
+        } else {
+            System.out.println("删除文件不存在");
+        }
+    }
+
+    /**
      * 转换文件大小  参数为xxB,结果保留2位小数
      */
     public static String getPrintSize(long size) {
