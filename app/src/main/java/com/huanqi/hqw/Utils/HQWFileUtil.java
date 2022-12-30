@@ -52,7 +52,7 @@ public class HQWFileUtil {
     /**
      * 删除所有文件
      */
-    public void deleteFile(File file) {
+    public static void deleteFile(File file) {
         if (file.exists()) {
             if (file.isFile()) {
                 file.delete();
