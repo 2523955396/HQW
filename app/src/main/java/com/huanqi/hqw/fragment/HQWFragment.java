@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.os.Build;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -136,6 +139,16 @@ public class HQWFragment extends Fragment {
                 booleans.add(false);
         }
         return booleans;
+    }
+
+
+    //获取状态栏的高度 单位px
+    public int HQWgetStatusBarHeight() {
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return getResources().getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 
 
