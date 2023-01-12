@@ -181,8 +181,11 @@ public class HQWActivity extends AppCompatActivity {
 
     /**
      * 设置使用HQW状态栏
-     * 列：Color.WHITE
-     * 列：View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+     *  状态栏背景颜色：Color.WHITE
+     * 状态栏属性：View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 显示状态栏可设置背景颜色
+     *View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
+     * View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 显示状态栏 不显示状态栏文字 不全屏
+     *View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void HQWsetStatusBar(int color, int textcolor) {
@@ -193,6 +196,15 @@ public class HQWActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.getDecorView().setSystemUiVisibility(textcolor);//状态栏字体颜色
         }
+    }
+
+    //获取状态栏的高度 单位px
+    private int HQWgetStatusBarHeight() {
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return getResources().getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 
     public void initView() {
