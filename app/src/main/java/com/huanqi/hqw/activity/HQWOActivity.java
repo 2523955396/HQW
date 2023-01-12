@@ -167,7 +167,7 @@ public class HQWOActivity extends Activity {
     }
 
     //获取状态栏的高度 单位px
-    private int HQWgetStatusBarHeight() {
+    public int HQWgetStatusBarHeight() {
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             return getResources().getDimensionPixelSize(resourceId);
