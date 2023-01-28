@@ -1,9 +1,13 @@
 package com.huanqi.hqw.animation;
 
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+
+import androidx.annotation.NonNull;
 
 import com.huanqi.hqw.Utils.HQWWeightUtil;
 
@@ -48,6 +52,34 @@ public class HQWAnimation {
         animation.setDuration(time);
         animation.start();
     }
+
+
+    /**
+     * 高宽调整动画
+     * view
+     * WorH true为宽 false为高
+     * f 高宽调整大小
+     * time 时间 毫秒1:1000
+     */
+    public static void WidghtValue(View view,boolean WorH,Float f,int time){
+        ValueAnimator valueAnimator=ValueAnimator.ofFloat(view.getMeasuredHeight(), f);
+        valueAnimator.setDuration(time);
+        valueAnimator.start();
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(@NonNull ValueAnimator animation) {
+                ViewGroup.LayoutParams layoutParams= view.getLayoutParams();
+                if (WorH){
+                    layoutParams.width=(int)animation.getAnimatedValue();
+                }else {
+                    layoutParams.height=(int)animation.getAnimatedValue();
+                }
+                view.setLayoutParams(layoutParams);
+            }
+        });
+    }
+
+
 
     /**
      * Apater删除动画，从下往上收缩

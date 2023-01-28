@@ -50,6 +50,7 @@ public class MainActivity extends HQWActivity {
         HQWPermissions(PERMISSIONS, new permission() {
             @Override
             public void onsucceed() {
+                HQWLogUtil.logi("授权了","授权了");
                 initView();
             }
             @Override
