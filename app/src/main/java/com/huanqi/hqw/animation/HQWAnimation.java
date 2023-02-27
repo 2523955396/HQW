@@ -62,7 +62,12 @@ public class HQWAnimation {
      * time 时间 毫秒1:1000
      */
     public static void WidghtValue(View view,boolean WorH,int i,int time){
-        ValueAnimator valueAnimator=ValueAnimator.ofInt(view.getMeasuredHeight(), i);
+        ValueAnimator valueAnimator=null;
+        if (WorH){
+            valueAnimator=ValueAnimator.ofInt(view.getMeasuredWidth(), i);
+        }else {
+            valueAnimator=ValueAnimator.ofInt(view.getMeasuredHeight(), i);
+        }
         valueAnimator.setDuration(time);
         valueAnimator.start();
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
