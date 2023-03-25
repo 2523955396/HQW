@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
+import com.huanqi.hqw.model.HQWModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -215,4 +216,51 @@ public class HQWActivity extends AppCompatActivity {
 
     }
 
+
+    HQWModel hqwModel;
+    public void initModel(HQWModel hqwModel){
+        this.hqwModel=hqwModel;
+        hqwModel.onCreate(this);
+    }
+
+    public void setHqwModel(HQWModel hqwModel) {
+        this.hqwModel = hqwModel;
+    }
+
+    public HQWModel getHqwModel() {
+        return hqwModel;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (hqwModel!=null){
+            hqwModel.onPause();
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (hqwModel!=null){
+            hqwModel.onRestart();
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (hqwModel!=null){
+            hqwModel.onResume();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (hqwModel!=null){
+            hqwModel.onDestroy();
+        }
+    }
 }

@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.huanqi.hqw.Interface.orientation;
 import com.huanqi.hqw.Interface.permission;
+import com.huanqi.hqw.model.HQWModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -157,5 +158,45 @@ public class HQWFragment extends Fragment {
     }
     public void initData(){
 
+    }
+
+    HQWModel hqwModel;
+    public void initModel(HQWModel hqwModel){
+        this.hqwModel=hqwModel;
+        hqwModel.onCreate(this);
+    }
+
+    public void setHqwModel(HQWModel hqwModel) {
+        this.hqwModel = hqwModel;
+    }
+
+    public HQWModel getHqwModel() {
+        return hqwModel;
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (hqwModel!=null){
+            hqwModel.onPause();
+        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (hqwModel!=null){
+            hqwModel.onResume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (hqwModel!=null){
+            hqwModel.onDestroy();
+        }
     }
 }
