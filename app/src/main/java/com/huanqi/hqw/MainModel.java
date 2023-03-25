@@ -17,7 +17,6 @@ public class MainModel extends HQWModel {
     @Override
     public void onRestart() {
         super.onRestart();
-        HQWLogUtil.logi("自行了","dadaa");
     }
 
     @Override
