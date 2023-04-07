@@ -3,7 +3,7 @@ package com.huanqi.hqw;
 import android.Manifest;
 import android.os.Bundle;
 
-import com.huanqi.hqw.Interface.permission;
+import com.huanqi.hqw.Interface.HQWPermission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 
@@ -21,7 +21,7 @@ public class MainActivity extends HQWActivity {
 
         initModel(new MainModel());
 
-        HQWPermissions(PERMISSIONS, new permission() {
+        HQWPermissions(PERMISSIONS, new HQWPermission() {
             @Override
             public void onsucceed() {
                 HQWLogUtil.logi("授权了","授权了");

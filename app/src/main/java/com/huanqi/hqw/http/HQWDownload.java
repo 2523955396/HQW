@@ -2,9 +2,8 @@ package com.huanqi.hqw.http;
 
 import androidx.annotation.NonNull;
 
-import com.huanqi.hqw.Interface.FileDownloadCallBack;
+import com.huanqi.hqw.Interface.HQWDownloadListener;
 import com.huanqi.hqw.Utils.HQWFileUtil;
-import com.huanqi.hqw.Utils.HQWLogUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,8 +46,6 @@ public class HQWDownload {
 
     }
 
-
-
     /**
      * 下载功能
      * url 超链接
@@ -57,7 +54,7 @@ public class HQWDownload {
      * ResumeTransfer 是否断点续传
      * callBack调用回调
      */
-    public static void DownloadFile(String url, File file, HttpMachine httpMachine, FileDownloadCallBack callBack) {
+    public static void DownloadFile(String url, File file, HttpMachine httpMachine, HQWDownloadListener callBack) {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request  request = new Request.Builder()
                 .url(url)
@@ -67,7 +64,7 @@ public class HQWDownload {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                callBack.onfailed(file);
+                callBack.onFailed(file);
             }
 
             @Override
@@ -83,16 +80,16 @@ public class HQWDownload {
                     int len = -1;
                     while ((len = is.read(buffer)) != -1) {
                         out.write(buffer, 0, len);
-                        callBack.ondownloading(file,file.length(), contentLength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(contentLength));
+                        callBack.onDownloading(file,file.length(), contentLength, HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(contentLength));
                     }
                     call.cancel();
-                    callBack.onsucceed(file);
+                    callBack.onSucceed(file);
                 } catch (Exception v) {
                     call.cancel();
                     is.close();
                     out.flush();
                     out.close();
-                    callBack.onfailed(file);
+                    callBack.onFailed(file);
                 }
             }
         });
@@ -120,7 +117,7 @@ public class HQWDownload {
      * ResumeTransfer 是否断点续传
      * callBack调用回调
      */
-    public static void ResumeDownloadFile(String url, File file, HttpMachine httpMachine, FileDownloadCallBack callBack) {
+    public static void ResumeDownloadFile(String url, File file, HttpMachine httpMachine, HQWDownloadListener callBack) {
         HQWDownloadRegister hqwDownloadRegister=new HQWDownloadRegister();
 
         Request  request = new Request.Builder()
@@ -131,7 +128,7 @@ public class HQWDownload {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                callBack.onfailed(file);
+                callBack.onFailed(file);
             }
 
             @Override
@@ -157,7 +154,7 @@ public class HQWDownload {
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        callBack.onfailed(file);
+                        callBack.onFailed(file);
                     }
 
                     @Override
@@ -174,16 +171,16 @@ public class HQWDownload {
                             int len = -1;
                             while ((len = is.read(buffer)) != -1) {
                                 out.write(buffer, 0, len);
-                                callBack.ondownloading(file,file.length(), hqwDownloadRegister.getContentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(hqwDownloadRegister.getContentLength()));
+                                callBack.onDownloading(file,file.length(), hqwDownloadRegister.getContentLength(), HQWFileUtil.getPrintSize(file.length()), HQWFileUtil.getPrintSize(hqwDownloadRegister.getContentLength()));
                             }
                             call.cancel();
-                            callBack.onsucceed(file);
+                            callBack.onSucceed(file);
                         } catch (Exception v) {
                             call.cancel();
                             is.close();
                             out.flush();
                             out.close();
-                            callBack.onstop(file);
+                            callBack.onStop(file);
                         }
                     }
                 });

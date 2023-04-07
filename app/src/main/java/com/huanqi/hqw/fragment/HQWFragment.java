@@ -4,20 +4,17 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.os.Build;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.huanqi.hqw.Interface.orientation;
-import com.huanqi.hqw.Interface.permission;
+import com.huanqi.hqw.Interface.HQWOrientation;
+import com.huanqi.hqw.Interface.HQWPermission;
 import com.huanqi.hqw.model.HQWModel;
 
 import java.util.ArrayList;
@@ -26,8 +23,8 @@ import java.util.Map;
 
 public class HQWFragment extends Fragment {
     Toast toast;
-    public permission permission;
-    public orientation orientation;
+    public HQWPermission permission;
+    public HQWOrientation orientation;
     public void setToast(String text){
         if (toast!=null){
             toast.cancel();
@@ -48,7 +45,7 @@ public class HQWFragment extends Fragment {
         }
     }
 
-    public  void HQWOrientation(orientation orientation){
+    public  void HQWOrientation(HQWOrientation orientation){
         this.orientation=orientation;
     }
 
@@ -120,7 +117,7 @@ public class HQWFragment extends Fragment {
     });
 
 
-    public void HQWPermissions(String[] permissions, permission permission) {
+    public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
         resultLauncherpermission.launch(permissions);
     }

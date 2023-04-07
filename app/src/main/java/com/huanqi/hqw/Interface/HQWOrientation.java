@@ -1,6 +1,6 @@
 package com.huanqi.hqw.Interface;
 
-public interface orientation {
+public interface HQWOrientation {
     void vertical();
     void horizontal();
 }

@@ -1,6 +1,6 @@
 package com.huanqi.hqw.Interface;
 
-public interface permission {
+public interface HQWPermission {
     void onsucceed();
     void onfailure();
 }

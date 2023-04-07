@@ -1,16 +1,10 @@
 package com.huanqi.hqw.activity;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -18,15 +12,12 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.huanqi.hqw.Interface.orientation;
-import com.huanqi.hqw.Interface.permission;
-import com.huanqi.hqw.Utils.HQWLogUtil;
+import com.huanqi.hqw.Interface.HQWOrientation;
+import com.huanqi.hqw.Interface.HQWPermission;
 import com.huanqi.hqw.model.HQWModel;
 
 import java.util.ArrayList;
@@ -35,9 +26,8 @@ import java.util.Map;
 
 public class HQWActivity extends AppCompatActivity {
     Toast toast;
-    int maxpermission = 0;//权限授权了多少个
-    public permission permission;
-    public orientation orientation;
+    public HQWPermission permission;
+    public HQWOrientation orientation;
 
     public void setToast(String text) {
         if (toast != null) {
@@ -65,7 +55,7 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void HQWOrientation(orientation orientation) {
+    public void HQWOrientation(HQWOrientation orientation) {
         this.orientation = orientation;
     }
 
@@ -127,8 +117,7 @@ public class HQWActivity extends AppCompatActivity {
     });
 
 
-    public void HQWPermissions(String[] permissions, permission permission) {
-//        requestPermissions(permissions, 777);
+    public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
         resultLauncherpermission.launch(permissions);
     }
@@ -151,26 +140,6 @@ public class HQWActivity extends AppCompatActivity {
     }
 
 
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == 777) {
-//            for (int i = 0; i < permissions.length; i++) {
-//                if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED) {
-//                    maxpermission++;
-//                    if (maxpermission == permissions.length) {
-//                        permission.onsucceed();
-//                    }
-//                } else {
-//                    permission.onfailure();
-//                    maxpermission = 0;
-//                    return;
-//                }
-//            }
-//
-//        }
-//    }
 
     public void HQWsetScreen(boolean islighting) {
         if (islighting) {
