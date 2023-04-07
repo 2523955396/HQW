@@ -10,7 +10,8 @@ import okhttp3.Response;
 import okio.BufferedSink;
 
 public interface FileDownloadCallBack {
-    void progress(long ProgressSize,long MaxSize,String HQWProgressSize,String HQWMaxSize);
-    void onsuccess(File file,int state);
-    void onfailed(Call call,IOException e);
+    void ondownloading(File file,long ProgressSize,long MaxSize,String HQWProgressSize,String HQWMaxSize);
+    void onsucceed(File file);
+    void onstop(File file);
+    void onfailed(File file);
 }

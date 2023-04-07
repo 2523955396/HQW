@@ -4,9 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
     android:gravity="center"
-    >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_ssssss"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal">
+
+    </ProgressBar>
+
+    <TextView
+        android:id="@+id/tv_btn"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="下载"
+        android:gravity="center"></TextView>
 
 </LinearLayout>
