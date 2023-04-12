@@ -38,7 +38,7 @@ android {
 //        //include ,exclude参数来设置过滤
 //        include('classes.jar')
 //        //重命名
-//        rename ('classes.jar', 'myjar.jar')
+//        rename ('classes.jar', 'HQW1.0.7.jar')
 //    }
 //
 //    makeJar.dependsOn(build)

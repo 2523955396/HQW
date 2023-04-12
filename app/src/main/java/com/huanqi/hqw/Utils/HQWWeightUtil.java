@@ -58,6 +58,14 @@ public class HQWWeightUtil {
         return fragment.getResources().getDisplayMetrics().heightPixels;
     }
 
+    public static int getPhoneWidth(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
+    public static int getPhoneHigh(Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
+    }
+
 
 
 }
