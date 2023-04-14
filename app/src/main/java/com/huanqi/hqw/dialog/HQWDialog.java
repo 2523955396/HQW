@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.transition.Slide;
 
 import com.huanqi.hqw.R;
 
@@ -57,6 +58,15 @@ public class HQWDialog extends Dialog {
     public void setFullscreen() {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
+
+    /**
+     * 设置位置
+     */
+    public void setGravity(@Slide.GravityFlag int gravity) {
+        getWindow().setGravity(gravity);
+    }
+
+
 
     public void initView() {
     }
