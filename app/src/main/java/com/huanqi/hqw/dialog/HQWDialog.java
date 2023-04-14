@@ -47,7 +47,7 @@ public class HQWDialog extends Dialog {
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
         getWindow().setBackgroundDrawableResource(R.color.transparency);//设置边框颜色,这个是替换,写死就行 注:原边框背景是一张图片
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//正常状态
+
     }
 
     /**
@@ -65,7 +65,7 @@ public class HQWDialog extends Dialog {
     }
 
     /**
-     * 去除状态栏 全屏展示
+     * 正常状态
      */
     public void CancelFullscreen() {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
