@@ -67,7 +67,7 @@ public class HQWDialog extends Dialog {
     /**
      * 正常状态
      */
-    public void CancelFullscreen() {
+    public void cancelFullscreen() {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
