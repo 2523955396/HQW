@@ -1,7 +1,5 @@
 package com.huanqi.hqw;
 
-import android.widget.TextView;
-
 import com.huanqi.hqw.activity.HQWActivity;
 import com.huanqi.hqw.model.HQWModel;
 
@@ -16,8 +14,6 @@ public class MainModel extends HQWModel {
     @Override
     public void initView() {
         super.initView();
-
-
     }
 
     @Override

@@ -2,6 +2,9 @@ package com.huanqi.hqw.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,12 +46,13 @@ public class HQWDialog extends Dialog {
         getWindow().setAttributes(layoutParams);
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
         getWindow().setBackgroundDrawableResource(R.color.transparency);//设置边框颜色,这个是替换,写死就行 注:原边框背景是一张图片
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
     }
 
     /**
      * 设置取消背景阴影
      */
-    public void setShadow() {
+    public void setCancelBackgroundShadow() {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     }
 
@@ -60,17 +64,27 @@ public class HQWDialog extends Dialog {
     }
 
     /**
+     * 设置View全屏覆盖状态栏
+     */
+    public void setViewFullscreen(){
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    }
+
+    /**
      * 设置位置
      */
     public void setGravity(@Slide.GravityFlag int gravity) {
         getWindow().setGravity(gravity);
     }
 
-
-
     public void initView() {
     }
 
     public void initData() {
     }
+
+    /*
+    * 暂存注释
+    *   getWindow().setStatusBarColor(Color.TRANSPARENT);//设置状态栏颜色
+    * */
 }
