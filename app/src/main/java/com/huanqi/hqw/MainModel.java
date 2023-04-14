@@ -1,21 +1,23 @@
 package com.huanqi.hqw;
 
-import com.huanqi.hqw.Utils.HQWLogUtil;
-import com.huanqi.hqw.Utils.HQWWeightUtil;
+import android.widget.TextView;
+
 import com.huanqi.hqw.activity.HQWActivity;
 import com.huanqi.hqw.model.HQWModel;
 
 public class MainModel extends HQWModel {
 
-
     @Override
     public void onCreate(HQWActivity hqwActivity) {
         super.onCreate(hqwActivity);
+        initView();
     }
 
     @Override
     public void initView() {
         super.initView();
+
+
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 
 public class MainActivity extends HQWActivity {
+
     String[] PERMISSIONS = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -18,7 +19,6 @@ public class MainActivity extends HQWActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initModel(new MainModel());
 
         HQWPermissions(PERMISSIONS, new HQWPermission() {

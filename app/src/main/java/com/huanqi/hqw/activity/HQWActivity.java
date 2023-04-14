@@ -158,13 +158,13 @@ public class HQWActivity extends AppCompatActivity {
      *View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void HQWsetStatusBar(int color, int textcolor) {
+    public void HQWsetStatusBar(int color, int state) {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(color);//状态栏颜色
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.getDecorView().setSystemUiVisibility(textcolor);//状态栏字体颜色
+            window.getDecorView().setSystemUiVisibility(state);//状态栏字体颜色
         }
     }
 

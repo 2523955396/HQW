@@ -14,8 +14,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.HQW.Dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
 </resources>
