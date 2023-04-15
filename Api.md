@@ -119,14 +119,51 @@
 #### HQWMd5Util MD5加密处理类
 - getResult(String s);//md5加密 大写
 
+#### HQWSDCardUtil SD卡信息类
+- getRAMInfo(Context context);//获取手机RAM 信息
+- isSDCardMount();//判断SD是否挂载
+    /**
+     * 获取手机存储 ROM 信息
+     *
+     * type：用于区分内置存储于外置存储的方法
+     *
+     * 内置SD卡 ：INTERNAL_STORAGE = 0;
+     *
+     * 外置SD卡：EXTERNAL_STORAGE = 1;
+     * **/
+- getStorageInfo(Context context, int type);//type 0为内部储存 1为外部储存
+    /**
+     * 使用反射方法 获取手机存储路径
+     *
+     * **/
+- getStoragePath(Context context, int type);//type 0为内部储存 1为外部储存 在填写1的时候如果没有外部储存会导致闪退
+    /**
+     * 获取 手机 RAM 信息
+     * */
+- getTotalRAM(Context context);
+- getTotalRAMOther(Context context);
+
+- getAvailableRAM(Context context);//获取手机可用RAM
+- getTotalInternalMemorySize(Context context);//获取手机内部存储空间 以M,G为单位的容量
+- getAvailableInternalMemorySize(Context context);//获取手机内部可用存储空间 以M,G为单位的容量
+- getTotalExternalMemorySize(Context context);//获取手机外部存储空间 以M,G为单位的容量
+- getAvailableExternalMemorySize(Context context);//获取手机外部可用存储空间 以M,G为单位的容量
+- getSDCardInfo();//SD卡信息
+- getSDCardTotalStorage(long totalByte);//获取 SD 卡总存储空间
+
+#### HQWTimeUtil 帧时间处理类
+- ValueForTime(int timeMs);//时间转换
+
+#### HQWWeightUtil Weight处理类
+- dptopx(Context context, float dpValue);//DP转换为PX
+- pxtodp(Context context, float pxValue);//PX转换为DP
+- hideSystemNavigationBar(Activity activity);//隐藏标题栏
+- showSystemNavigationBar(Activity activity);//显示标题栏
 
 
 
-
-
-
-
-
-
-
+#### HQWUtil  
+- getVersionCode(Context context);//获取版本号
+- getVersionName(Context context)；//获取版本名称
+- InstallApk(Context context, File file);//安装apk
 
