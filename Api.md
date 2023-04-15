@@ -18,7 +18,7 @@
 - initData();//初始化数据 //自由继承
 
 
-#### HQWDialog
+#### HQWDialog 弹窗
 - setBorderExtension();//扩展边框边距
 - setCancelBackgroundShadow;//设置取消背景阴影
 - setFullscreen();//去除状态栏 全屏展示
@@ -28,7 +28,7 @@
 - initView();//初始化界面 //自由继承
 - initData();//初始化数据 //自由继承
 
-#### HQWModel(HQWActivity HQWFragment View模型,建议配合使用) 自定义扩展
+#### HQWModel(HQWActivity HQWFragment Activity Fragment View模型,建议配合使用) 自定义扩展
 - onCreate();//创建
 - onCreate(View view);//创建View
 - onCreate(View view, Context context);//创建View 带上下文
@@ -42,6 +42,12 @@
 - onDestroy();//销毁扩展
 - initView();//初始化界面 //自由继承
 - initData();//初始化数据 //自由继承
+
+#### HQWAnimation 动画
+> //平移动画 XorY true横向平移 Y纵向平移 f 平移多少px time 时间 毫秒1:1000
+- WidghtMoveXY(View view,boolean XorY,Float f,int time);
+- WidghtRotateXY(View view,boolean XorY,Float f,Float ff,int time);
+
 
 
 
