@@ -27,3 +27,36 @@
 - setGravity();//设置位置 注 如果使用setBorderExtension()会无效
 - initView();//初始化界面 //自由继承
 - initData();//初始化数据 //自由继承
+
+#### HQWModel(HQWActivity HQWFragment View模型,建议配合使用) 自定义扩展
+- onCreate();//创建
+- onCreate(View view);//创建View
+- onCreate(View view, Context context);//创建View 带上下文
+- onCreate(HQWActivity hqwActivity);//创建HQWActivity
+- onCreate(HQWActivity hqwActivity,View view);//创建HQWActivity View
+- onCreate(HQWFragment hqwFragment);//创建HQWFragment
+- onCreate(HQWFragment hqwFragment,View view);//创建HQWFragment View
+- onPause();//界面暂停扩展
+- onRestart();//刷新扩展
+- onResume();//重启扩展
+- onDestroy();//销毁扩展
+- initView();//初始化界面 //自由继承
+- initData();//初始化数据 //自由继承
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
