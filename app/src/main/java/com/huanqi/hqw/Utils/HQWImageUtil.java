@@ -1,18 +1,26 @@
 package com.huanqi.hqw.Utils;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.huanqi.hqw.Interface.Image.HttpImageBitmap;
 import com.huanqi.hqw.Interface.Image.HttpImageDrawable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -43,6 +51,49 @@ public class HQWImageUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 保存位图
+     * Bitmap bitmap 位图
+     * File file 文件位置
+     * boolean JPGorPNG
+     * ImageCallback imageCallback 成功回调
+     */
+    public static void saveBitmap(Context context, Bitmap bitmap,File file,boolean JPGorPNG,ImageCallback imageCallback) {
+        //设置图片名称，要保存png，这里后缀就是png，要保存jpg，后缀就用jpg
+        try {
+            //文件输出流
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            //压缩图片，如果要保存png，就用Bitmap.CompressFormat.PNG，要保存jpg就用Bitmap.CompressFormat.JPEG,质量是100%，表示不压缩
+            if (JPGorPNG){
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            }else {
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            }
+            //写入，这里会卡顿，因为图片较大
+            fileOutputStream.flush();
+            //记得要关闭写入流
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 下面的步骤必须有，不然在相册里找不到图片，若不需要让用户知道你保存了图片，可以不写下面的代码。
+        // 把文件插入到系统图库
+        try {
+            MediaStore.Images.Media.insertImage(context.getContentResolver(),
+                    file.getAbsolutePath(), file.getName(), null);
+            imageCallback.onSuccess();
+        } catch (FileNotFoundException e) {
+            imageCallback.onFail();
+            e.printStackTrace();
+        }
+//            // 最后通知图库更新
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                Uri.fromFile(new File(file.getPath()))));
+    }
+
 
     /**
     *图片信息复制
@@ -137,6 +188,11 @@ public class HQWImageUtil {
                 httpImageDrawable.callback(drawable);
             }
         }.execute();
+    }
+
+    interface ImageCallback{
+        void onSuccess();
+        void onFail();
     }
 
 

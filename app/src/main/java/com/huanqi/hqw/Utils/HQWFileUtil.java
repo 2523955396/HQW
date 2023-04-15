@@ -25,6 +25,14 @@ import java.text.DecimalFormat;
  */
 public class HQWFileUtil {
 
+
+    /**
+     * 手机图片路径
+     */
+    public static File Pictures(Context context){
+        return context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+    }
+
     /**
      * 创建普通文件
      */
