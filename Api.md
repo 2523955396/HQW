@@ -85,10 +85,39 @@
 - getDeviceDefaultLanguage();//获取当前手机系统语言。
 - getDeviceSupportLanguage();//获取当前系统上的语言列表(Locale列表)
 
+#### HQWFileUtil 文件处理类
+- File(String catalogue,String filename);//目录,文件名 如果文件名为空自动创建
+- SDFile(String catalogue,String filename);//手机SD卡目录,文件名 如果文件名为空自动创建
+- deleteFile(File file);//删除目录下所以文件
+- getPrintSize();//文件大小转换 参数为xxB,结果保留2位小数
+- UritoFilePath(Context context, Uri imageUri);//Uri格式转换为FilePath路径 返回String类型
+- getRealFilePath(final Context context, final Uri uri);//Uri格式转换为FilePath路径 返回String类型 安卓4.4以下使用
+- uriToFileApiQ(Context context, Uri uri);//Uri格式转换为FilePath路径 安卓10以上适配
 
+#### HQWFragmentUtil Fragment处理类
+- removeAllFragments(FragmentActivity context);//删除所有fragment
 
+#### HQWImageUtil 图片处理类
+    /**
+    * 图片质量压缩
+    * Compressformat   Bitmap.CompressFormat.JPEG PNG WEBP WEBP_LOSSY WEBP_LOSSLESS
+    * bmp 图片位图
+    * file 图片质量压缩后输出位置
+    * quality 质量程度 由100到0 从高到低
+    */
+- qualityCompress(Bitmap.CompressFormat Compressformat, Bitmap bmp, File file, int quality);
+- saveExif(String oldFilePath, String newFilePath);//图片信息复制
+- bitmap(String img);网络位图请求 返回Bitmap
+- AsyncBitmap(String url, HttpImageBitmap httpImageBitmap);//网络异步请求位图
+- drawable(String img);//网络绘制请求
+- AsyncDrawable(String url,HttpImageDrawable httpImageDrawable);网络异步请求绘制
 
+#### HQWJsonUtil Json处理类
+- ObjectGetValue(String message,String key);//Json {} 格式给message和key拿到 value
+- ArrayGetValue(String message,int key);//ArrayJson [] 格式给message和key(第几个)拿到 value
 
+#### HQWMd5Util MD5加密处理类
+- getResult(String s);//md5加密 大写
 
 
 
