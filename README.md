@@ -24,7 +24,8 @@ implementation 'com.gitee.BAILIS:HQW:version'
 4. 文件转换简化 字节转换为带标签 MB GB 文件File转Uri Uri转File
 5. 对兼容各大android系统做准备并通知
 
-[文档详细](https://gitee.com/BAILIS/HQW/blob/master/Api.md)
+#### Api文档详细 
+[点击查看](https://gitee.com/BAILIS/HQW/blob/master/Api.md)
 
 
 #### 整库情况
