@@ -122,27 +122,10 @@
 #### HQWSDCardUtil SD卡信息类
 - getRAMInfo(Context context);//获取手机RAM 信息
 - isSDCardMount();//判断SD是否挂载
-    /**
-     * 获取手机存储 ROM 信息
-     *
-     * type：用于区分内置存储于外置存储的方法
-     *
-     * 内置SD卡 ：INTERNAL_STORAGE = 0;
-     *
-     * 外置SD卡：EXTERNAL_STORAGE = 1;
-     * **/
-- getStorageInfo(Context context, int type);//type 0为内部储存 1为外部储存
-    /**
-     * 使用反射方法 获取手机存储路径
-     *
-     * **/
-- getStoragePath(Context context, int type);//type 0为内部储存 1为外部储存 在填写1的时候如果没有外部储存会导致闪退
-    /**
-     * 获取 手机 RAM 信息
-     * */
-- getTotalRAM(Context context);
-- getTotalRAMOther(Context context);
-
+- getStorageInfo(Context context, int type);//获取手机存储ROM信息 type 0为内部储存 1为外部储存
+- getStoragePath(Context context, int type);//使用反射方法获取手机存储路径 type 0为内部储存 1为外部储存 在填写1的时候如果没有外部储存会导致闪退
+- getTotalRAM(Context context);//获取 手机 RAM 信息
+- getTotalRAMOther(Context context);//获取 手机 RAM 信息
 - getAvailableRAM(Context context);//获取手机可用RAM
 - getTotalInternalMemorySize(Context context);//获取手机内部存储空间 以M,G为单位的容量
 - getAvailableInternalMemorySize(Context context);//获取手机内部可用存储空间 以M,G为单位的容量
@@ -159,8 +142,6 @@
 - pxtodp(Context context, float pxValue);//PX转换为DP
 - hideSystemNavigationBar(Activity activity);//隐藏标题栏
 - showSystemNavigationBar(Activity activity);//显示标题栏
-
-
 
 #### HQWUtil  
 - getVersionCode(Context context);//获取版本号
