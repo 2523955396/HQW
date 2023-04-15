@@ -17,7 +17,7 @@ import com.huanqi.hqw.Utils.HQWWeightUtil;
 public class HQWAnimation {
 
     /**
-     * 平移
+     * 平移动画
      * view
      * XorY true横向平移 Y纵向平移
      * f 平移多少px

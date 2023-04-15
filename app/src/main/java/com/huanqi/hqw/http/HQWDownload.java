@@ -51,7 +51,6 @@ public class HQWDownload {
      * url 超链接
      * file 文件保存地址
      * HttpMachine 下载管理器
-     * ResumeTransfer 是否断点续传
      * callBack调用回调
      */
     public static void DownloadFile(String url, File file, HttpMachine httpMachine, HQWDownloadListener callBack) {
@@ -114,7 +113,6 @@ public class HQWDownload {
      * url 超链接
      * file 文件保存地址
      * HttpMachine 下载管理器
-     * ResumeTransfer 是否断点续传
      * callBack调用回调
      */
     public static void ResumeDownloadFile(String url, File file, HttpMachine httpMachine, HQWDownloadListener callBack) {

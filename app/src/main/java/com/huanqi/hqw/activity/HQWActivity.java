@@ -48,9 +48,9 @@ public class HQWActivity extends AppCompatActivity {
         }
     }
 
-    public void GotoActivity(Class<?> activity, boolean isflash) {
+    public void GotoActivity(Class<?> activity, boolean isfinish) {
         startActivity(new Intent(this, activity));
-        if (isflash) {
+        if (isfinish) {
             finish();
         }
     }

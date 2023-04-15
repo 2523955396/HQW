@@ -47,22 +47,27 @@ public class HQWImageUtil {
     /**
     *图片信息复制
     */
-    public static void saveExif(String oldFilePath, String newFilePath) throws Exception {
-        ExifInterface oldExif=new ExifInterface(oldFilePath);
-        ExifInterface newExif=new ExifInterface(newFilePath);
-        Class<ExifInterface> cls = ExifInterface.class;
-        Field[] fields = cls.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            String fieldName = fields[i].getName();
-            if (!TextUtils.isEmpty(fieldName) && fieldName.startsWith("TAG")) {
-                String fieldValue = fields[i].get(cls).toString();
-                String attribute = oldExif.getAttribute(fieldValue);
-                if (attribute != null) {
-                    newExif.setAttribute(fieldValue, attribute);
+    public static void saveExif(String oldFilePath, String newFilePath)  {
+        try {
+            ExifInterface oldExif=new ExifInterface(oldFilePath);
+            ExifInterface newExif=new ExifInterface(newFilePath);
+            Class<ExifInterface> cls = ExifInterface.class;
+            Field[] fields = cls.getFields();
+            for (int i = 0; i < fields.length; i++) {
+                String fieldName = fields[i].getName();
+                if (!TextUtils.isEmpty(fieldName) && fieldName.startsWith("TAG")) {
+                    String fieldValue = fields[i].get(cls).toString();
+                    String attribute = oldExif.getAttribute(fieldValue);
+                    if (attribute != null) {
+                        newExif.setAttribute(fieldValue, attribute);
+                    }
                 }
             }
+            newExif.saveAttributes();
+        }catch (Exception v){
+
         }
-        newExif.saveAttributes();
+
     }
 
     /**

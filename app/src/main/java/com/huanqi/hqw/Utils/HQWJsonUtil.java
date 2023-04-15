@@ -5,19 +5,19 @@ import org.json.JSONObject;
 
 public class HQWJsonUtil {
 
-    public static String ObjectGetValue(String jsontext,String key){
+    public static String ObjectGetValue(String message,String key){
         String textout="";
         try {
-            textout=new JSONObject(jsontext).getString(key);
+            textout=new JSONObject(message).getString(key);
         }catch (Exception v){
         }
         return textout;
     }
 
-    public static String ArrayGetValue(String jsontext,int key){
+    public static String ArrayGetValue(String message,int key){
         String textout="";
         try {
-            textout=new JSONArray(jsontext).getString(key);
+            textout=new JSONArray(message).getString(key);
         }catch (Exception v){
         }
         return textout;
