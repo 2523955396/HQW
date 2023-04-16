@@ -29,8 +29,12 @@ public class HQWFileUtil {
     /**
      * 手机图片路径
      */
-    public static File Pictures(Context context){
-        return context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+    public static File Pictures(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
     }
 
     /**
