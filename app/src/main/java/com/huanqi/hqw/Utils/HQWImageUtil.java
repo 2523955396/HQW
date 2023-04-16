@@ -77,9 +77,9 @@ public class HQWImageUtil {
         try {
             MediaStore.Images.Media.insertImage(context.getContentResolver(),
                     file.getAbsolutePath(), file.getName(), null);
-            imageCallback.onSuccess();
+            imageCallback.onSuccess(file);
         } catch (FileNotFoundException e) {
-            imageCallback.onFail();
+            imageCallback.onFail(file);
             e.printStackTrace();
         }
         //通知图库更新
@@ -184,7 +184,7 @@ public class HQWImageUtil {
     }
 
    public interface ImageCallback{
-       public void onSuccess();
-       public void onFail();
+       public void onSuccess(File file);
+       public void onFail(File file);
     }
 }
