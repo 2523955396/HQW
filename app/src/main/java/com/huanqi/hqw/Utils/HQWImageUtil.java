@@ -183,8 +183,8 @@ public class HQWImageUtil {
         }.execute();
     }
 
-    interface ImageCallback{
-        void onSuccess();
-        void onFail();
+   public interface ImageCallback{
+       public void onSuccess();
+       public void onFail();
     }
 }
