@@ -39,9 +39,9 @@ public class HQWImageUtil {
     * file 图片质量压缩后输出位置
     * quality 质量程度 由100到0 从高到低
     */
-    public static void qualityCompress(Bitmap.CompressFormat Compressformat, Bitmap bmp, File file, int quality) {//jpg
+    public static void qualityCompress(Bitmap.CompressFormat compressFormat, Bitmap bitmap, File file, int quality) {//jpg
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Compressformat, quality, baos);
+        bitmap.compress(compressFormat, quality, baos);
         try {
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(baos.toByteArray());
@@ -56,23 +56,16 @@ public class HQWImageUtil {
      * 保存位图
      * Bitmap bitmap 位图
      * File file 文件位置
-     * boolean JPGorPNG
-     * ImageCallback imageCallback 成功回调
+     * Compressformat   Bitmap.CompressFormat.JPEG PNG WEBP WEBP_LOSSY WEBP_LOSSLESS
+     * quality 质量程度 由100到0 从高到低
+     * ImageCallback imageCallback 成功失败回调
      */
-    public static void saveBitmap(Context context, Bitmap bitmap,File file,boolean JPGorPNG,ImageCallback imageCallback) {
+    public static void saveBitmap(Context context, Bitmap bitmap,File file,Bitmap.CompressFormat compressFormat,int quality,ImageCallback imageCallback) {
         //设置图片名称，要保存png，这里后缀就是png，要保存jpg，后缀就用jpg
         try {
-            //文件输出流
             FileOutputStream fileOutputStream = new FileOutputStream(file);
-            //压缩图片，如果要保存png，就用Bitmap.CompressFormat.PNG，要保存jpg就用Bitmap.CompressFormat.JPEG,质量是100%，表示不压缩
-            if (JPGorPNG){
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-            }else {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-            }
-            //写入，这里会卡顿，因为图片较大
+            bitmap.compress(compressFormat, quality, fileOutputStream);
             fileOutputStream.flush();
-            //记得要关闭写入流
             fileOutputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -89,7 +82,7 @@ public class HQWImageUtil {
             imageCallback.onFail();
             e.printStackTrace();
         }
-//            // 最后通知图库更新
+        //通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 Uri.fromFile(new File(file.getPath()))));
     }
@@ -194,6 +187,4 @@ public class HQWImageUtil {
         void onSuccess();
         void onFail();
     }
-
-
 }
