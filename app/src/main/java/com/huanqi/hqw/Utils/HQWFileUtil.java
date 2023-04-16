@@ -25,18 +25,6 @@ import java.text.DecimalFormat;
  */
 public class HQWFileUtil {
 
-
-    /**
-     * 手机图片路径
-     */
-    public static File Pictures(Context context,String filename){
-        File file=context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        if (!file.exists()){
-            file.mkdirs();
-        }
-        return new File(file+"/"+filename);
-    }
-
     /**
      * 创建普通文件
      */
@@ -59,6 +47,72 @@ public class HQWFileUtil {
         }
         File fileentire=new File(filecatalogue+"/"+filename);
         return fileentire;
+    }
+
+    /**
+     * 手机视频路径
+     */
+    public static File Movies(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_MOVIES);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
+    }
+
+    /**
+     * 手机图片路径
+     */
+    public static File Pictures(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
+    }
+
+    /**
+     * 手机音乐路径
+     */
+    public static File Music(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
+    }
+
+    /**
+     * 手机下载路径
+     */
+    public static File Downloads(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
+    }
+
+    /**
+     * 手机DCIM路径
+     */
+    public static File DCIM(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_DCIM);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
+    }
+
+    /**
+     * 手机DOCUMENTS路径
+     */
+    public static File Documents(Context context,String filename){
+        File file=context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        if (!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file+"/"+filename);
     }
 
     /**
