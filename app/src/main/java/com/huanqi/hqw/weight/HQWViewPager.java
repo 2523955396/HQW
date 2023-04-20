@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 /**
- * 建议滑动是重新请求布局，可以重新绘制,不然按最长的View展示
+ * 建议滑动时重新请求布局，可以重新绘制,不然按最长的View展示
  *  hqwViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
  *             @Override
  *             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
