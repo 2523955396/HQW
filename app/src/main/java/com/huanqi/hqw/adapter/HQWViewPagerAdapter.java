@@ -12,14 +12,17 @@ import java.util.List;
 
 public class HQWViewPagerAdapter extends PagerAdapter {
 
+
     Context context;
-    List<View> views=new ArrayList<>();
-    public HQWViewPagerAdapter(Context context){
-        this.context=context;
+    List<View> views = new ArrayList<>();
+
+    public HQWViewPagerAdapter(Context context) {
+        this.context = context;
 
     }
-    public void setData(List<View> views){
-        this.views=views;
+
+    public void setData(List<View> views) {
+        this.views = views;
         notifyDataSetChanged();
     }
 
@@ -30,7 +33,7 @@ public class HQWViewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view==object;
+        return view == object;
     }
 
     @NonNull
