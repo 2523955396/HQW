@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
-import com.huanqi.hqw.adapter.ViewPagerAdapter;
+import com.huanqi.hqw.adapter.HQWViewPagerAdapter;
 
 /*
-* 根据子View绘制
+* 根据子View绘制 如果按照子View 请搭配HQWViewPagerAdapter使用
 * */
 public class HQWViewPager extends ViewPager {
     private boolean isSwipe = false;//是否禁止横向滑动
@@ -56,7 +56,7 @@ public class HQWViewPager extends ViewPager {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (isRedraw){
             if (getChildCount() > 0) {
-                ViewPagerAdapter adapter = (ViewPagerAdapter) getAdapter();
+                HQWViewPagerAdapter adapter = (HQWViewPagerAdapter) getAdapter();
                 if (adapter == null)
                     throw new NullPointerException("类AutoHeightViewPager中onMeasure方法获得的Adapter为空");
                 View view = adapter.getIndexView(getCurrentItem());

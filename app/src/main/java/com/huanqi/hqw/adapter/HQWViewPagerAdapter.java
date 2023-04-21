@@ -10,11 +10,11 @@ import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerAdapter extends PagerAdapter {
+public class HQWViewPagerAdapter extends PagerAdapter {
 
     Context context;
     List<View> views=new ArrayList<>();
-    public ViewPagerAdapter(Context context){
+    public HQWViewPagerAdapter(Context context){
         this.context=context;
 
     }
