@@ -9,25 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
-/**
- * 建议滑动时重新请求布局，可以重新绘制,不然按最长的View展示
- *  hqwViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
- *             @Override
- *             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
- *
- *             }
- *
- *             @Override
- *             public void onPageSelected(int position) {
- *                 hqwViewPager.requestLayout();
- *             }
- *
- *             @Override
- *             public void onPageScrollStateChanged(int state) {
- *
- *             }
- *         });
- */
+import com.huanqi.hqw.adapter.ViewPagerAdapter;
+
+/*
+* 根据子View绘制
+* */
 public class HQWViewPager extends ViewPager {
     private boolean isSwipe = false;//是否禁止横向滑动
     private boolean isRedraw = false;//是否按子View高度进行绘制
@@ -68,38 +54,32 @@ public class HQWViewPager extends ViewPager {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        // find the current child view
-        // and you must cache all the child view
-        // use setOffscreenPageLimit(adapter.getCount())
         if (isRedraw){
-            View view = getChildAt(getCurrentItem());
-            if (view != null) {
-                // measure the current child view with the specified measure spec
-                view.measure(widthMeasureSpec, heightMeasureSpec);
-            }
-            setMeasuredDimension(getMeasuredWidth(), measureHeight(heightMeasureSpec, view));
-        }
+            if (getChildCount() > 0) {
+                ViewPagerAdapter adapter = (ViewPagerAdapter) getAdapter();
+                if (adapter == null)
+                    throw new NullPointerException("类AutoHeightViewPager中onMeasure方法获得的Adapter为空");
+                View view = adapter.getIndexView(getCurrentItem());
+                if (view == null)
+                    throw new NullPointerException("类AutoHeightViewPager中onMeasure方法获得的view为空");
+                view.measure(0, 0);// 手动测量
+                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(measureHeight(heightMeasureSpec, view), MeasureSpec.EXACTLY));
+            } else {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+            }
+        }else {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
     }
 
-    /**
-     * Determines the height of this view
-     *
-     * @param measureSpec A measureSpec packed into an int
-     * @param view the base view with already measured height
-     *
-     * @return The height of the view, honoring constraints from measureSpec
-     */
     private int measureHeight(int measureSpec, View view) {
         int result = 0;
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
-
         if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
         } else {
-            // set the height from the base view if available
             if (view != null) {
                 result = view.getMeasuredHeight();
             }
@@ -109,27 +89,6 @@ public class HQWViewPager extends ViewPager {
         }
         return result;
     }
-
-    /**
-     * 单独测量view获取尺寸
-     *
-     * @param view
-     */
-    public void measeureView(View view) {
-
-        int intw = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-        int inth = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-        // 重新测量view
-        view.measure(intw, inth);
-
-        // 以上3句可简写成下面一句
-        //view.measure(0,0);
-
-        // 获取测量后的view尺寸
-        int intwidth = view.getMeasuredWidth();
-        int intheight = view.getMeasuredHeight();
-    }
-
 
 }
 
