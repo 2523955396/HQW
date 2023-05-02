@@ -150,13 +150,6 @@ public class HQWFragment extends Fragment {
     }
 
 
-    public void initView(){
-
-    }
-    public void initData(){
-
-    }
-
     HQWModel hqwModel;
     public void initModel(HQWModel hqwModel){
         this.hqwModel=hqwModel;

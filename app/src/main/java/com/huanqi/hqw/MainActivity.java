@@ -25,21 +25,11 @@ public class MainActivity extends HQWActivity {
             @Override
             public void onsucceed() {
                 HQWLogUtil.logi("授权了","授权了");
-                initView();
             }
             @Override
             public void onfailure() {
 
             }
         });
-    }
-    @Override
-    public void initView() {
-        super.initView();
-    }
-
-    @Override
-    public void initData() {
-        super.initData();
     }
 }

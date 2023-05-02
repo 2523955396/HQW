@@ -177,13 +177,6 @@ public class HQWActivity extends AppCompatActivity {
         return 0;
     }
 
-    public void initView() {
-
-    }
-
-    public void initData() {
-
-    }
 
 
     HQWModel hqwModel;
