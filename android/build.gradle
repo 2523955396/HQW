@@ -28,6 +28,7 @@ android {
 
 dependencies {
 
+    api "androidx.core:core-ktx:$rootProject.ext.ktx"
     api "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
     api "com.google.android.material:material:$rootProject.ext.material"
     api "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
