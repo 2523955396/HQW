@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.huanqi.hqw.video'
+    namespace 'com.huanqi.hqw.android'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
@@ -35,8 +35,10 @@ dependencies {
     api "androidx.test.ext:junit:$rootProject.ext.ext_junit"
     api "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
 
-    api "com.google.android.exoplayer:exoplayer:$rootProject.ext.exoplayer"//只有api module才可以被app使用
+    api "com.google.guava:guava:$rootProject.ext.guava"
 
-    api fileTree(include:['*.jar'],dir: 'libs')
-    api fileTree(include:['*.aar'],dir: 'libs')
+    api "com.github.bumptech.glide:glide:$rootProject.ext.glide"
+    api "com.google.android.flexbox:flexbox:$rootProject.ext.flexbox"
+    api "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
+    api "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
 }

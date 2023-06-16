@@ -15,6 +15,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "HQW"
 include ':app'
-include ':app:http'
-include ':app:android'
+include ':http'
+include ':android'
 //include ':app:video'

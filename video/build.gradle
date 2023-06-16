@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.huanqi.hqw.http'
+    namespace 'com.huanqi.hqw.video'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
@@ -27,14 +27,11 @@ android {
 }
 
 dependencies {
-    api "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
-    api "com.google.android.material:material:$rootProject.ext.material"
-    api "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
-    api "junit:junit:$rootProject.ext.junit"
-    api "androidx.test.ext:junit:$rootProject.ext.ext_junit"
-    api "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
 
-    api "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
-    api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
-    api "org.java-websocket:Java-WebSocket:$rootProject.ext.Java_WebSocket"
+    implementation project(':android')
+
+    api "com.google.android.exoplayer:exoplayer:$rootProject.ext.exoplayer"//只有api module才可以被app使用
+
+    api fileTree(include:['*.jar'],dir: 'libs')
+    api fileTree(include:['*.aar'],dir: 'libs')
 }
