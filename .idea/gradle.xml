@@ -11,10 +11,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/android" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/http" />
-            <option value="$PROJECT_DIR$/video" />
+            <option value="$PROJECT_DIR$/app/android" />
+            <option value="$PROJECT_DIR$/app/http" />
+            <option value="$PROJECT_DIR$/app/video" />
           </set>
         </option>
       </GradleProjectSettings>

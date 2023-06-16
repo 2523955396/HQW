@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.huanqi.video'
+    namespace 'com.huanqi.hqw.video'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {

@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.huanqi.http'
+    namespace 'com.huanqi.hqw.http'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
