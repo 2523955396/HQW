@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/android" />
             <option value="$PROJECT_DIR$/app/http" />
-            <option value="$PROJECT_DIR$/app/video" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -17,4 +17,4 @@ rootProject.name = "HQW"
 include ':app'
 include ':app:http'
 include ':app:android'
-include ':app:video'
+//include ':app:video'

@@ -28,12 +28,12 @@ android {
 
 dependencies {
 
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
-    implementation "com.google.android.material:material:$rootProject.ext.material"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
-    testImplementation "junit:junit:$rootProject.ext.junit"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.ext_junit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
+    api "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+    api "com.google.android.material:material:$rootProject.ext.material"
+    api "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
+    api "junit:junit:$rootProject.ext.junit"
+    api "androidx.test.ext:junit:$rootProject.ext.ext_junit"
+    api "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
 
     api "com.google.android.exoplayer:exoplayer:$rootProject.ext.exoplayer"//只有api module才可以被app使用
 

@@ -48,19 +48,19 @@ android {
 }
 
 dependencies {
-//    implementation project(':app:android')
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
-    implementation "com.google.android.material:material:$rootProject.ext.material"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
-    testImplementation "junit:junit:$rootProject.ext.junit"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.ext_junit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
-
-    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
-    implementation "com.google.android.flexbox:flexbox:$rootProject.ext.flexbox"
-    implementation "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
-    implementation "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
+    implementation project(':app:android')
+//    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+//    implementation "com.google.android.material:material:$rootProject.ext.material"
+//    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
+//    testImplementation "junit:junit:$rootProject.ext.junit"
+//    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.ext_junit"
+//    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
+//
+//    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
+//    implementation "com.google.android.flexbox:flexbox:$rootProject.ext.flexbox"
+//    implementation "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
+//    implementation "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
 
     implementation project(':app:http')
-    implementation project(':app:video')
+//    implementation project(':app:video')
 }
