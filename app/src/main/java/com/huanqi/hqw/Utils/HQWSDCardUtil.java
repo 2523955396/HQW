@@ -51,76 +51,8 @@ public class HQWSDCardUtil {
                 Environment.MEDIA_MOUNTED);
     }
 
-    /**
-     * 获取手机存储 ROM 信息
-     *
-     * type：用于区分内置存储于外置存储的方法
-     *
-     * 内置SD卡 ：INTERNAL_STORAGE = 0;
-     *
-     * 外置SD卡：EXTERNAL_STORAGE = 1;
-     * **/
-    public static String getStorageInfo(Context context, int type) {//type 0为内部储存 1为外部储存
 
-        String path = getStoragePath(context, type);
-        /**
-         * 无外置SD 卡判断
-         * **/
-        if (isSDCardMount() == false || TextUtils.isEmpty(path) || path == null) {
-            return "无外置SD卡";
-        }
 
-        File file = new File(path);
-        StatFs statFs = new StatFs(file.getPath());
-        String stotageInfo;
-
-        long blockCount = statFs.getBlockCountLong();
-        long bloackSize = statFs.getBlockSizeLong();
-        long totalSpace = bloackSize * blockCount;
-
-        long availableBlocks = statFs.getAvailableBlocksLong();
-        long availableSpace = availableBlocks * bloackSize;
-
-        stotageInfo = "可用/总共："
-                + Formatter.formatFileSize(context, availableSpace) + "/"
-                + Formatter.formatFileSize(context, totalSpace);
-
-        return stotageInfo;
-
-    }
-
-    /**
-     * 使用反射方法 获取手机存储路径
-     *
-     * **/
-    public static String getStoragePath(Context context, int type) {//type 0为内部储存 1为外部储存 在填写1的时候如果没有外部储存会导致闪退
-
-        StorageManager sm = (StorageManager) context
-                .getSystemService(Context.STORAGE_SERVICE);
-        try {
-            Method getPathsMethod = sm.getClass().getMethod("getVolumePaths",
-                    null);
-            String[] path = (String[]) getPathsMethod.invoke(sm, null);
-
-            switch (type) {
-                case INTERNAL_STORAGE:
-                    return path[type];
-                case EXTERNAL_STORAGE:
-                    if (path.length > 1) {
-                        return path[type];
-                    } else {
-                        return null;
-                    }
-
-                default:
-                    break;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
      * 获取 手机 RAM 信息 方法 一

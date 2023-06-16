@@ -7,6 +7,8 @@ import com.huanqi.hqw.Interface.HQWPermission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 
+import retrofit2.Retrofit;
+
 public class MainActivity extends HQWActivity {
 
     String[] PERMISSIONS = new String[]{

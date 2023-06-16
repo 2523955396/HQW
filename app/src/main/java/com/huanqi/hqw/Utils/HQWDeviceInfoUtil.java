@@ -202,10 +202,6 @@ public class HQWDeviceInfoUtil {
 
                 + "\n\n5. RAM 信息:\n\t\t" + HQWSDCardUtil.getRAMInfo(context)
 
-                + "\n\n6. 内部存储信息\n\t\t" + HQWSDCardUtil.getStorageInfo(context, 0)
-
-                + "\n\n7. SD卡 信息:\n\t\t" + HQWSDCardUtil.getStorageInfo(context, 1)
-
                 + "\n\n10. 系统默认语言:\n\t\t" + getDeviceDefaultLanguage()
 
                 + "\n\n11. 硬件序列号(设备名):\n\t\t" + android.os.Build.SERIAL
