@@ -7,14 +7,17 @@ import com.huanqi.hqw.Interface.HQWPermission;
 import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.activity.HQWActivity;
 
+import java.util.List;
+
 import retrofit2.Retrofit;
 
 public class MainActivity extends HQWActivity {
 
+
     String[] PERMISSIONS = new String[]{
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_COARSE_LOCATION
+//            Manifest.permission.READ_MEDIA_VIDEO,
+//            Manifest.permission.READ_MEDIA_AUDIO,
+//            Manifest.permission.READ_MEDIA_IMAGES
     };
 
     @Override
@@ -26,6 +29,7 @@ public class MainActivity extends HQWActivity {
         HQWPermissions(PERMISSIONS, new HQWPermission() {
             @Override
             public void onsucceed() {
+                setToast("授权成功");
                 HQWLogUtil.logi("授权了","授权了");
             }
             @Override

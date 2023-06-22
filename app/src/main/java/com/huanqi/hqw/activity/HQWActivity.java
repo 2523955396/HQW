@@ -1,5 +1,6 @@
 package com.huanqi.hqw.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import androidx.core.content.ContextCompat;
 
 import com.huanqi.hqw.Interface.HQWOrientation;
 import com.huanqi.hqw.Interface.HQWPermission;
+import com.huanqi.hqw.Utils.HQWLogUtil;
 import com.huanqi.hqw.model.HQWModel;
 
 import java.util.ArrayList;
@@ -117,9 +119,40 @@ public class HQWActivity extends AppCompatActivity {
     });
 
 
+    /**
+     * @param InputPermissions 需要处理的安卓动权
+     * 安卓动权修改如下:
+     * @旧:(文件读写)||安卓13+,注:新增文件权限，不代表替代
+     * READ_EXTERNAL_STORAGE
+     * WRITE_EXTERNAL_STORAGE
+     * @新:(文件读写)||安卓13+,注:新增文件权限，不代表替代
+     * READ_MEDIA_IMAGES
+     * READ_MEDIA_AUDIO
+     * READ_MEDIA_VIDEO
+     */
+    public String[] PermissionDispose(String[] InputPermissions) {//安卓13动权处理
+        List<String> stringList = new ArrayList<>();
+        for (int i = 0; i < InputPermissions.length; i++) {
+            if (Build.VERSION.SDK_INT >= 33) {//当SDK等级大于等于安卓13时
+                if (InputPermissions[i] != Manifest.permission.READ_EXTERNAL_STORAGE &&
+                        InputPermissions[i] != Manifest.permission.WRITE_EXTERNAL_STORAGE) {//判断为传统文件读写动权时跳过
+                    stringList.add(InputPermissions[i]);
+                }
+            } //todo 如果有其他版本需要单独修改
+            else {
+                stringList.add(InputPermissions[i]);
+            }
+        }
+        String[] OutPermissions = new String[stringList.size()];
+        for (int i = 0; i < stringList.size(); i++) {
+            OutPermissions[i] = stringList.get(i);
+        }
+        return OutPermissions;
+    }
+
     public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
-        resultLauncherpermission.launch(permissions);
+        resultLauncherpermission.launch(PermissionDispose(permissions));
     }
 
     public boolean HQWISPermission(String permission) {
@@ -128,8 +161,9 @@ public class HQWActivity extends AppCompatActivity {
         else
             return false;
     }
+
     public List<Boolean> HQWISPermissions(String[] permissions) {
-        List<Boolean> booleans=new ArrayList<>();
+        List<Boolean> booleans = new ArrayList<>();
         for (int i = 0; i < permissions.length; i++) {
             if (ContextCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_GRANTED)
                 booleans.add(true);
@@ -138,7 +172,6 @@ public class HQWActivity extends AppCompatActivity {
         }
         return booleans;
     }
-
 
 
     public void HQWsetScreen(boolean islighting) {
@@ -151,11 +184,11 @@ public class HQWActivity extends AppCompatActivity {
 
     /**
      * 设置使用HQW状态栏
-     *  状态栏背景颜色：Color.WHITE
+     * 状态栏背景颜色：Color.WHITE
      * 状态栏属性：View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 显示状态栏可设置背景颜色
-     *View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
+     * View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
      * View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 显示状态栏 不显示状态栏文字 不全屏
-     *View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
+     * View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void HQWsetStatusBar(int color, int state) {
@@ -178,10 +211,10 @@ public class HQWActivity extends AppCompatActivity {
     }
 
 
-
     HQWModel hqwModel;
-    public void initModel(HQWModel hqwModel){
-        this.hqwModel=hqwModel;
+
+    public void initModel(HQWModel hqwModel) {
+        this.hqwModel = hqwModel;
         hqwModel.onCreate(this);
     }
 
@@ -196,7 +229,7 @@ public class HQWActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (hqwModel!=null){
+        if (hqwModel != null) {
             hqwModel.onPause();
         }
     }
@@ -204,7 +237,7 @@ public class HQWActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        if (hqwModel!=null){
+        if (hqwModel != null) {
             hqwModel.onRestart();
         }
     }
@@ -213,7 +246,7 @@ public class HQWActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (hqwModel!=null){
+        if (hqwModel != null) {
             hqwModel.onResume();
         }
     }
@@ -221,7 +254,7 @@ public class HQWActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (hqwModel!=null){
+        if (hqwModel != null) {
             hqwModel.onDestroy();
         }
     }
