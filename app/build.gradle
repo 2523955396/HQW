@@ -53,5 +53,5 @@ android {
 dependencies {
     implementation project(':android')
     implementation project(':http')
-    implementation project(':video')
+//    implementation project(':video')
 }
