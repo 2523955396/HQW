@@ -27,7 +27,6 @@ android {
 }
 
 dependencies {
-
     implementation project(':android')
 
     api "com.google.android.exoplayer:exoplayer:$rootProject.ext.exoplayer"//只有api module才可以被app使用
