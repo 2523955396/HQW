@@ -31,7 +31,9 @@ dependencies {
     implementation project(':android')
 
     api "com.google.android.exoplayer:exoplayer:$rootProject.ext.exoplayer"//只有api module才可以被app使用
-
-    api fileTree(include:['*.jar'],dir: 'libs')
-    api fileTree(include:['*.aar'],dir: 'libs')
+    api "com.aliyun.sdk.android:AlivcArtc:$rootProject.ext.AlivcArtc"
+    api "com.aliyun.rts.android:RtsSDK:$rootProject.ext.RtsSDK"
+    api "com.aliyun.sdk.android:AliyunPlayer:$rootProject.ext.AliyunPlayer"
+//    api fileTree(include:['*.jar'],dir: 'libs')
+//    api fileTree(include:['*.aar'],dir: 'libs')
 }

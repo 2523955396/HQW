@@ -13,10 +13,10 @@ ext {
     minSdk = 21
     targetSdk = 33
 
-    versionCode = 20230616
-    versionName = "1.2.8"
+    versionCode = 20230708
+    versionName = "1.2.9"
 
-    //内包
+    //内包Android
     ktx="1.7.0"//kotlin适配包
     appcompat = "1.3.0"
     material = "1.4.0"
@@ -26,15 +26,22 @@ ext {
     espresso_core = "3.4.0"
     guava="27.0.1-android"
 
-    //外包
+    //外包Android
     glide = "4.13.0"//图形框架
-    exoplayer = "2.15.0"//EXOplayer
     flexbox = "3.0.0"//标签
     roundedimageview = "2.3.0"//圆形图片框架
+    animators = "4.0.2"//Adapter动画库
+    jsoup='1.15.4'//HTML属性处理
+
+    //外包Http
     okhttp = "4.10.0"//网络请求框架
     retrofit = "2.9.0"//网络请求框架
-    animators = "4.0.2"//Adapter动画库
     Java_WebSocket = '1.5.3'//WebSocket
 
+    //外包Video
+    exoplayer = "2.15.0"//EXOplayer
+    AlivcArtc="5.4.4.0"//阿里云artc
+    RtsSDK="2.1.0"//阿里云RTS
+    AliyunPlayer="5.4.4.0-full"//阿里云播放器
 
 }

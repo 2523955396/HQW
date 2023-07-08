@@ -11,10 +11,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/releases" }//阿里云播放器等等
     }
 }
 rootProject.name = "HQW"
 include ':app'
 include ':http'
 include ':android'
-//include ':app:video'
+include ':video'

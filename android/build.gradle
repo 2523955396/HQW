@@ -42,4 +42,5 @@ dependencies {
     api "com.google.android.flexbox:flexbox:$rootProject.ext.flexbox"
     api "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
     api "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
+    api "org.jsoup:jsoup:$rootProject.ext.jsoup"
 }
