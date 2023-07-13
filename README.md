@@ -29,5 +29,5 @@ implementation 'com.gitee.BAILIS:HQW:version'
 
 
 #### 整库情况
-1. 支持已支持安卓13 SDK等级最低21最高已适配33
-2. 内涵EXOPlayer Ffmpeg扩展仓库,需要自取video Module
+1. 已支持安卓13 MinSDK21 TarGetSDK33
+2. 内含EXOPlayer Ffmpeg扩展仓库,需要自取video Module
