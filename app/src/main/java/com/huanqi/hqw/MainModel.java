@@ -1,7 +1,7 @@
 package com.huanqi.hqw;
 
-import com.huanqi.hqw.activity.HQWActivity;
-import com.huanqi.hqw.model.HQWModel;
+import com.huanqi.android.activity.HQWActivity;
+import com.huanqi.android.model.HQWModel;
 
 public class MainModel extends HQWModel {
 

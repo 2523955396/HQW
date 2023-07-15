@@ -1,4 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    <uses-permission android:name="android.permission.INTERNET" />&lt;!&ndash;因特网&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />&lt;!&ndash;粗略位置信息&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />&lt;!&ndash;安装APK需要的权限&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"-->
+    <!--        tools:ignore="QueryAllPackagesPermission" />&lt;!&ndash;获取系统应用信息权限 Android11&+需要 AndroidUtil&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;     安卓13废弃废弃读写动权&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />&lt;!&ndash;外部文件读取权限 android13-需要&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />&lt;!&ndash;外部文件写入权限 android13-需要&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;     安卓13新增权限 针对图片视频语音&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />&lt;!&ndash;外部文件图片读取权限 android13&+需要&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />&lt;!&ndash;外部文件音频读取权限 android13&+需要&ndash;&gt;-->
+    <!--    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />&lt;!&ndash;外部文件视频读取权限 android13&+需要&ndash;&gt;-->
+
+    <!--    <application-->
+    <!--        android:allowBackup="true"-->
+    <!--        android:icon="@mipmap/ic_launcher"-->
+    <!--        android:label="@string/app_name"-->
+    <!--        android:preserveLegacyExternalStorage="true"-->
+    <!--        android:requestLegacyExternalStorage="true"-->
+    <!--        android:roundIcon="@mipmap/ic_launcher_round"-->
+    <!--        android:supportsRtl="true"-->
+    <!--        android:theme="@style/Theme.HQW"-->
+    <!--        android:usesCleartextTraffic="true">-->
+    <!--        <activity-->
+    <!--            android:name=".MainActivity"-->
+    <!--            android:configChanges="orientation|screenSize"-->
+    <!--            android:exported="true">-->
+    <!--            <intent-filter>-->
+    <!--                <action android:name="android.intent.action.MAIN" />-->
+    <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+    <!--            </intent-filter>-->
+    <!--        </activity>-->
+
+    <!--        <provider-->
+    <!--            android:name="androidx.core.content.FileProvider"-->
+    <!--            android:authorities="${applicationId}.fileProvider"-->
+    <!--            android:exported="false"-->
+    <!--            android:grantUriPermissions="true">-->
+    <!--            <meta-data-->
+    <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+    <!--                android:resource="@xml/filepaths" />-->
+    <!--        </provider>-->
+    <!--    </application>-->
+
 
 </manifest>

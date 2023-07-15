@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.huanqi.hqw_live",
+  "variantName": "liveDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 999,
+      "versionName": "9.9.9",
+      "outputFile": "app-live-debug.apk"
+    }
+  ],
+  "elementType": "File"
+}
