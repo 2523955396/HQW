@@ -10,6 +10,8 @@ import com.huanqi.android.activity.HQWActivity;
 import com.huanqi.hqw.databinding.ActivityMainBinding;
 import com.huanqi.http.upload.HQWUploadManger;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +35,6 @@ public class MainActivity extends HQWActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initModel(new MainModel());
-
         HQWPermissions(PERMISSIONS, new HQWPermission() {
             @Override
             public void onsucceed() {

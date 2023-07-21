@@ -25,6 +25,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+
 }
 
 dependencies {
@@ -44,4 +46,9 @@ dependencies {
     api "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
     api "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
     api "org.jsoup:jsoup:$rootProject.ext.jsoup"
+
+    api "io.insert-koin:koin-core:$rootProject.ext.koin_core"
+    api "io.insert-koin:koin-android:$rootProject.ext.koin_android"
+    api "io.insert-koin:koin-android-compat:$rootProject.ext.koin_android_compat"
+
 }

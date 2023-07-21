@@ -117,45 +117,9 @@ public class HQWActivity extends AppCompatActivity {
         }
     });
 
-
-    /**
-     * @param InputPermissions 需要处理的安卓动权
-     * 安卓动权修改如下:
-     * @旧:(文件读写)||安卓13+,注:新增文件权限，不代表替代
-     * READ_EXTERNAL_STORAGE
-     * WRITE_EXTERNAL_STORAGE
-     * @新:(文件读写)||安卓13+,注:新增文件权限，不代表替代
-     * READ_MEDIA_IMAGES
-     * READ_MEDIA_AUDIO
-     * READ_MEDIA_VIDEO
-     */
-    public String[] PermissionDispose(String[] InputPermissions) {//安卓13动权处理
-        List<String> stringList = new ArrayList<>();
-        for (int i = 0; i < InputPermissions.length; i++) {
-            if (Build.VERSION.SDK_INT >= 33) {//当SDK等级大于等于安卓13时
-                if (InputPermissions[i] != Manifest.permission.READ_EXTERNAL_STORAGE &&
-                        InputPermissions[i] != Manifest.permission.WRITE_EXTERNAL_STORAGE) {//当sdk高于33时不具备read write识别权限
-                    stringList.add(InputPermissions[i]);
-                }
-            } //todo 如果有其他版本需要单独修改
-            else {
-                if (InputPermissions[i] != Manifest.permission.READ_MEDIA_AUDIO
-                        &&InputPermissions[i] != Manifest.permission.READ_MEDIA_IMAGES
-                        &&InputPermissions[i] != Manifest.permission.READ_MEDIA_VIDEO) {//当sdk低于33时不具备audio image video识别权限
-                    stringList.add(InputPermissions[i]);
-                }
-            }
-        }
-        String[] OutPermissions = new String[stringList.size()];
-        for (int i = 0; i < stringList.size(); i++) {
-            OutPermissions[i] = stringList.get(i);
-        }
-        return OutPermissions;
-    }
-
     public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
-        resultLauncherpermission.launch(PermissionDispose(permissions));
+        resultLauncherpermission.launch(permissions);
     }
 
     public boolean HQWISPermission(String permission) {
@@ -188,10 +152,11 @@ public class HQWActivity extends AppCompatActivity {
     /**
      * 设置使用HQW状态栏
      * 状态栏背景颜色：Color.WHITE
-     * 状态栏属性：View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 显示状态栏可设置背景颜色
-     * View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
-     * View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 显示状态栏 不显示状态栏文字 不全屏
-     * View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
+     * 状态栏属性：
+     * @value   View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 显示状态栏可设置背景颜色
+     * @value View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
+     * @value View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 显示状态栏 不显示状态栏文字 不全屏
+     * @value View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void HQWsetStatusBar(int color, int state) {
