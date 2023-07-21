@@ -19,32 +19,32 @@ android {
     }
 
 
-    flavorDimensions "hqw"//产品风味
-    productFlavors {
-        dev {
-            applicationId "com.huanqi.hqw_dev"
-            manifestPlaceholders=[AppName:"HQW_DEV"]
-            dimension="hqw"
-            versionCode=1
-            versionName="1.0.0"
-        }
-
-        demo {
-            applicationId "com.huanqi.hqw_demo"
-            manifestPlaceholders=[AppName:"HQW_DEMO"]
-            dimension="hqw"
-            versionCode=1
-            versionName="1.0.0"
-        }
-
-        live {
-            applicationId "com.huanqi.hqw_live"
-            manifestPlaceholders=[AppName:"HQW_LIVE"]
-            dimension="hqw"
-            versionCode=999
-            versionName="9.9.9"
-        }
-    }
+//    flavorDimensions "hqw"//产品风味
+//    productFlavors {
+//        dev {
+//            applicationId "com.huanqi.hqw_dev"
+//            manifestPlaceholders=[AppName:"HQW_DEV"]
+//            dimension="hqw"
+//            versionCode=1
+//            versionName="1.0.0"
+//        }
+//
+//        demo {
+//            applicationId "com.huanqi.hqw_demo"
+//            manifestPlaceholders=[AppName:"HQW_DEMO"]
+//            dimension="hqw"
+//            versionCode=1
+//            versionName="1.0.0"
+//        }
+//
+//        live {
+//            applicationId "com.huanqi.hqw_live"
+//            manifestPlaceholders=[AppName:"HQW_LIVE"]
+//            dimension="hqw"
+//            versionCode=999
+//            versionName="9.9.9"
+//        }
+//    }
 
 
     buildTypes {
