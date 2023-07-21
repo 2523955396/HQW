@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.library'
 //    id 'com.android.application'
-//    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -79,9 +80,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
 
 
@@ -102,8 +103,17 @@ android {
 //        rename ('classes.jar', 'HQW_Beta_1.3.7.jar')
 //    }
 //    makeJar.dependsOn(build)
-
 }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.huanqi'
+            artifactId = 'hqw'
+            version = "1.4.7"
+        }
+    }
+}
+
 
 dependencies {
     implementation project(':android')
