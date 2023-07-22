@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
 //    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
+//    id 'org.jetbrains.kotlin.android'
+//    id 'maven-publish'
 }
 
 android {
@@ -49,10 +49,10 @@ android {
 
 
     buildTypes {
-        debug {
-            buildConfigField('int', 'VersionCode', '1')
-            buildConfigField('String', 'VersionName', '"1.0.0"')
-        }
+//        debug {
+//            buildConfigField('int', 'VersionCode', '1')
+//            buildConfigField('String', 'VersionName', '"1.0.0"')
+//        }
 
         release {
             buildConfigField('int', 'VersionCode', '1')
@@ -63,16 +63,16 @@ android {
         }
     }
 
-
-
-    dataBinding {
-        enabled true
-    }
-
-
-    viewBinding {
-        enabled true
-    }
+//
+//
+//    dataBinding {
+//        enabled true
+//    }
+//
+//
+//    viewBinding {
+//        enabled true
+//    }
 
 
     compileOptions {
@@ -80,38 +80,30 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-
-
-//    lintOptions{ abortOnError false }//jar打包异常新增
-//
-//
-//    task makeJar(type: Copy) {
-//        //删除存在的
-//        delete 'build/libs/myjar.jar'
-//        //设置拷贝的文件
-//        from('build/intermediates/aar_main_jar/release/')
-//        //打进jar包后的文件目录
-//        into('build/libs/')
-//        //将classes.jar放入build/libs/目录下
-//        //include ,exclude参数来设置过滤
-//        include('classes.jar')
-//        //重命名
-//        rename ('classes.jar', 'HQW_Beta_1.3.7.jar')
+//    kotlinOptions {
+//        jvmTarget = '1.8'
 //    }
-//    makeJar.dependsOn(build)
-}
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.huanqi'
-            artifactId = 'hqw'
-            version = "1.4.7"
-        }
+
+
+
+    lintOptions{ abortOnError false }//jar打包异常新增
+
+
+
+    task makeJar(type: Copy) {
+        //删除存在的
+        delete 'build/libs/myjar.jar'
+        //设置拷贝的文件
+        from('build/intermediates/aar_main_jar/release/')
+        //打进jar包后的文件目录
+        into('build/libs/')
+        //将classes.jar放入build/libs/目录下
+        //include ,exclude参数来设置过滤
+        include('classes.jar')
+        //重命名
+        rename ('classes.jar', 'HQW_1_4_7.jar')
     }
+    makeJar.dependsOn(build)
 }
 
 

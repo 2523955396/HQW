@@ -3,11 +3,9 @@ package com.huanqi.hqw;
 import android.Manifest;
 import android.os.Bundle;
 
-import androidx.databinding.DataBindingUtil;
 
 import com.huanqi.android.Interface.HQWPermission;
 import com.huanqi.android.activity.HQWActivity;
-import com.huanqi.hqw.databinding.ActivityMainBinding;
 import com.huanqi.http.upload.HQWUploadManger;
 
 import org.json.JSONArray;
@@ -16,8 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import okhttp3.MultipartBody;
-import retrofit2.Retrofit;
 
 public class MainActivity extends HQWActivity {
 
