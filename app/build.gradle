@@ -48,20 +48,20 @@ android {
 //    }
 //
 //
-//    buildTypes {
-//        debug {
-//            buildConfigField('int', 'VersionCode', '1')
-//            buildConfigField('String', 'VersionName', '"1.0.0"')
-//        }
-//
-//        release {
-//            buildConfigField('int', 'VersionCode', '1')
-//            buildConfigField('String', 'VersionName', '"1.0.0"')
-//
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
+    buildTypes {
+        debug {
+            buildConfigField('int', 'VersionCode', '1')
+            buildConfigField('String', 'VersionName', '"1.0.0"')
+        }
+
+        release {
+            buildConfigField('int', 'VersionCode', '1')
+            buildConfigField('String', 'VersionName', '"1.0.0"')
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 //
 //
 //
