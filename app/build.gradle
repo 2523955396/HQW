@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-//    namespace 'com.huanqi.hqw'
+    namespace 'com.huanqi.hqw'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
@@ -49,10 +49,10 @@ android {
 //
 //
     buildTypes {
-        debug {
-            buildConfigField('int', 'VersionCode', '1')
-            buildConfigField('String', 'VersionName', '"1.0.0"')
-        }
+//        debug {
+//            buildConfigField('int', 'VersionCode', '1')
+//            buildConfigField('String', 'VersionName', '"1.0.0"')
+//        }
 
         release {
             buildConfigField('int', 'VersionCode', '1')
