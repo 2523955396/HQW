@@ -1,10 +1,5 @@
 package com.huanqi.android.activity;
 
-import static androidx.activity.result.ActivityResultCallerKt.registerForActivityResult;
-
-import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -16,11 +11,8 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,14 +20,13 @@ import androidx.core.content.ContextCompat;
 
 import com.huanqi.android.Interface.HQWOrientation;
 import com.huanqi.android.Interface.HQWPermission;
-import com.huanqi.android.Utils.HQWLogUtil;
 import com.huanqi.android.model.HQWModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HQWActivity extends Activity {
+public class HQWAppCompatActivity extends AppCompatActivity {
     Toast toast;
     public HQWPermission permission;
     public HQWOrientation orientation;
@@ -47,7 +38,7 @@ public class HQWActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                toast = Toast.makeText(HQWActivity.this, text, Toast.LENGTH_SHORT);
+                toast = Toast.makeText(HQWAppCompatActivity.this, text, Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
@@ -110,22 +101,27 @@ public class HQWActivity extends Activity {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 777) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+    ActivityResultLauncher<String[]> resultLauncherpermission = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
+        @Override
+        public void onActivityResult(Map<String, Boolean> result) {
+            boolean ISNICE = true;
+            for (Map.Entry<String, Boolean> maps : result.entrySet()) {
+                if (maps.getValue() == false) {
+                    ISNICE = false;
+                }
+            }
+            if (ISNICE) {
                 permission.onsucceed();
             } else {
                 permission.onfailure();
             }
-
         }
-    }
+    });
 
     public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
-        ActivityCompat.requestPermissions(this, permissions, 777);
+        resultLauncherpermission.launch(permissions);
     }
 
     public boolean HQWISPermission(String permission) {

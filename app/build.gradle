@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.huanqi.hqw'
+//    namespace 'com.huanqi.hqw'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
@@ -46,23 +46,23 @@ android {
 //            versionName="9.9.9"
 //        }
 //    }
-
-
-    buildTypes {
+//
+//
+//    buildTypes {
 //        debug {
 //            buildConfigField('int', 'VersionCode', '1')
 //            buildConfigField('String', 'VersionName', '"1.0.0"')
 //        }
-
-        release {
-            buildConfigField('int', 'VersionCode', '1')
-            buildConfigField('String', 'VersionName', '"1.0.0"')
-
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
+//
+//        release {
+//            buildConfigField('int', 'VersionCode', '1')
+//            buildConfigField('String', 'VersionName', '"1.0.0"')
+//
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//
 //
 //
 //    dataBinding {
