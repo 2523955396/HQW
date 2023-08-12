@@ -13,16 +13,16 @@
 - HQWsetScreen(boolean islighting);//设置屏幕是否常亮
 
 ```
-    /**
-     * 设置使用HQW状态栏导航栏
-     * @param statusBarColor 设置状态栏颜色
-     * @param statusBarTextColor 设置状态栏文字颜色false为白色 true为黑色
-     * @param isShowStatusBar 是否显示状态栏
-     * @param navigationBarColor 设置底部导航栏颜色
-     * @param NavigationBarTextColor  设置底部导航栏文字颜色false为白色 true为黑色
-     * @param isShowStatusBar 是否显示底部状态栏
-     * @param isImmerse 是否沉浸状态栏
-     */
+/**
+* 设置使用HQW状态栏导航栏
+* @param statusBarColor 设置状态栏颜色
+* @param statusBarTextColor 设置状态栏文字颜色false为白色 true为黑色
+* @param isShowStatusBar 是否显示状态栏
+* @param navigationBarColor 设置底部导航栏颜色
+* @param NavigationBarTextColor  设置底部导航栏文字颜色false为白色 true为黑色
+* @param isShowStatusBar 是否显示底部状态栏
+* @param isImmerse 是否沉浸状态栏
+*/
 HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar,boolean isImmerse)；//设置状态栏导航栏状态及颜色
 ```
 - HQWgetStatusBarHeight();//获取状态栏高度 单位 px
