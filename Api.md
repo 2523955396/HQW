@@ -23,9 +23,8 @@
      * @param isShowStatusBar 是否显示底部状态栏
      * @param isImmerse 是否沉浸状态栏
      */
+HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar,boolean isImmerse)；//设置状态栏导航栏状态及颜色
 ```
-
-- HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar,boolean isImmerse)；//设置状态栏导航栏状态及颜色
 - HQWgetStatusBarHeight();//获取状态栏高度 单位 px
 - initModel();//适配HQWModel
 - initView();//初始化界面 //自由继承
