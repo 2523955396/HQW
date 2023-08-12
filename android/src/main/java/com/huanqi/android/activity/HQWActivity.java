@@ -171,8 +171,9 @@ public class HQWActivity extends Activity {
      * @param navigationBarColor 设置底部导航栏颜色
      * @param NavigationBarTextColor  设置底部导航栏文字颜色false为白色 true为黑色
      * @param isShowStatusBar 是否显示底部状态栏
+     * @param isImmerse 是否沉浸状态栏
      */
-    public void HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar) {
+    public void HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar,boolean isImmerse) {
         Window window = getWindow();
         window.setStatusBarColor(statusBarColor);
         window.setNavigationBarColor(navigationBarColor);
@@ -188,6 +189,7 @@ public class HQWActivity extends Activity {
         }else {
             WindowCompat.getInsetsController(window,window.getDecorView()).hide(WindowInsetsCompat.Type.navigationBars());
         }
+        WindowCompat.setDecorFitsSystemWindows(window, !isImmerse);
     }
 
     //获取状态栏的高度 单位px
