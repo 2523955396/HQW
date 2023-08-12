@@ -205,4 +205,17 @@ public class RichWebView extends WebView {
         }
         return pics;
     }
+
+
+/****Activity操作回退上一步*****/
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && wvWebView.canGoBack()) {
+//            wvWebView.goBack();//返回上个页面
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);//退出H5界面
+//    }
+
+
 }
