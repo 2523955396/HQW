@@ -31,6 +31,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.huanqi.android.Interface.HQWOrientation;
 import com.huanqi.android.Interface.HQWPermission;
@@ -153,8 +155,8 @@ public class HQWActivity extends Activity {
     }
 
 
-    public void HQWsetScreen(boolean islighting) {
-        if (islighting) {
+    public void HQWsetScreen(boolean isLighting) {
+        if (isLighting) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//关闭屏幕常亮
@@ -162,27 +164,29 @@ public class HQWActivity extends Activity {
     }
 
     /**
-     * 设置使用HQW状态栏
-     * 状态栏背景颜色：Color.WHITE
-     * 状态栏属性：
-     * 该方式已经废弃
-     * 请采用WindowInsetsCompat(androidx.core:core-ktx)
-     *
-     * @deprecated View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR 显示状态栏可设置背景颜色
-     * @deprecated View.SYSTEM_UI_FLAG_FULLSCREEN 全屏去除状态栏
-     * @deprecated View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 显示状态栏 不显示状态栏文字 不全屏
-     * @deprecated View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN 全屏显示状态栏
-     *
-     *
+     * 设置使用HQW状态栏导航栏
+     * @param statusBarColor 设置状态栏颜色
+     * @param statusBarTextColor 设置状态栏文字颜色false为白色 true为黑色
+     * @param isShowStatusBar 是否显示状态栏
+     * @param navigationBarColor 设置底部导航栏颜色
+     * @param NavigationBarTextColor  设置底部导航栏文字颜色false为白色 true为黑色
+     * @param isShowStatusBar 是否显示底部状态栏
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void HQWsetStatusBar(int color, int windowInsetsController) {
+    public void HQWsetStatusNavigationBar(int statusBarColor, boolean statusBarTextColor, boolean isShowStatusBar, int navigationBarColor, boolean NavigationBarTextColor, boolean isShowNavigationBar) {
         Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(color);//状态栏颜色
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.getDecorView().setSystemUiVisibility(windowInsetsController);//状态栏字体颜色
+        window.setStatusBarColor(statusBarColor);
+        window.setNavigationBarColor(navigationBarColor);
+        WindowCompat.getInsetsController(window, window.getDecorView()).setAppearanceLightStatusBars(statusBarTextColor);
+        WindowCompat.getInsetsController(window, window.getDecorView()).setAppearanceLightNavigationBars(NavigationBarTextColor);
+        if (isShowStatusBar){
+            WindowCompat.getInsetsController(window,window.getDecorView()).show(WindowInsetsCompat.Type.statusBars());
+        }else {
+            WindowCompat.getInsetsController(window,window.getDecorView()).hide(WindowInsetsCompat.Type.statusBars());
+        }
+        if (isShowNavigationBar){
+            WindowCompat.getInsetsController(window,window.getDecorView()).show(WindowInsetsCompat.Type.navigationBars());
+        }else {
+            WindowCompat.getInsetsController(window,window.getDecorView()).hide(WindowInsetsCompat.Type.navigationBars());
         }
     }
 
@@ -243,8 +247,6 @@ public class HQWActivity extends Activity {
             hqwModel.onDestroy();
         }
     }
-
-
 
 
     /////////////////////////////////点击空白区域隐藏软键盘 自行集成复制使用///////////////////////////////////////
