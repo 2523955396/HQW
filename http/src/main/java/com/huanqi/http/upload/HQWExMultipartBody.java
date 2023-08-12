@@ -1,6 +1,5 @@
 package com.huanqi.http.upload;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.IOException;
@@ -13,16 +12,16 @@ import okio.BufferedSink;
 import okio.ForwardingSink;
 import okio.Okio;
 
-public class ExMultipartBody extends RequestBody {
+public class HQWExMultipartBody extends RequestBody {
     private RequestBody mRequestBody;
     private int mCurrentLength;
     private UploadProgressListener mProgressListener;
 
-    public ExMultipartBody(MultipartBody requestBody) {
+    public HQWExMultipartBody(MultipartBody requestBody) {
         this.mRequestBody = requestBody;
     }
 
-    public ExMultipartBody(MultipartBody requestBody, UploadProgressListener progressListener) {
+    public HQWExMultipartBody(MultipartBody requestBody, UploadProgressListener progressListener) {
         this.mRequestBody = requestBody;
         this.mProgressListener = progressListener;
     }

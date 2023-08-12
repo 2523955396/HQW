@@ -59,11 +59,17 @@ public class HQWAppCompatActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 获取屏幕竖屏横屏状态
+     * @param orientation 状态回调(实时)
+     * */
     public void HQWOrientation(HQWOrientation orientation) {
         this.orientation = orientation;
     }
 
-
+    /**
+     * 设置屏幕竖屏横屏状态
+     * */
     public void HQWsetOrientation(String name) {
         if (name.equals("横屏")) {//设置横屏
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -82,11 +88,16 @@ public class HQWAppCompatActivity extends AppCompatActivity {
         }
     }
 
-    public String HQWgetOrientation() {
+    /**
+     * 获取屏幕竖屏横屏状态
+     * @value 0为竖屏
+     * @value 1为横屏
+     * */
+    public int HQWgetOrientation() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            return "竖屏";
+            return 0;
         } else {
-            return "横屏";
+            return 1;
         }
     }
 
@@ -121,11 +132,21 @@ public class HQWAppCompatActivity extends AppCompatActivity {
         }
     });
 
+    /**
+     * HQW获取权限
+     * @param permissions 需要的权限
+     * @param permission 获取权限回调
+     * @value 建议配合HQWPermissionUtil.PermissionDispose()使用
+     * */
     public void HQWPermissions(String[] permissions, HQWPermission permission) {
         this.permission = permission;
         resultLauncherpermission.launch(permissions);
     }
 
+    /**
+     * 判断是否已经获取权限
+     * @param permission 需要判断的权限
+     * */
     public boolean HQWISPermission(String permission) {
         if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED)
             return true;
@@ -133,6 +154,11 @@ public class HQWAppCompatActivity extends AppCompatActivity {
             return false;
     }
 
+
+    /**
+     * 判断是否已经获取多个权限
+     * @param permissions 需要判断的权限们
+     * */
     public List<Boolean> HQWISPermissions(String[] permissions) {
         List<Boolean> booleans = new ArrayList<>();
         for (int i = 0; i < permissions.length; i++) {
@@ -144,7 +170,10 @@ public class HQWAppCompatActivity extends AppCompatActivity {
         return booleans;
     }
 
-
+    /**
+     * 设置屏幕常亮
+     * @param islighting 是否常亮
+     * */
     public void HQWsetScreen(boolean islighting) {
         if (islighting) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮

@@ -39,7 +39,7 @@ public class HQWUploadManger {
         builder.addFormDataPart(FileType, file.getName(), RequestBody.create(file, MediaType.parse(getMimeType(file.getAbsolutePath()))));
         multipartBodyCallback.addPart(builder);
 
-        ExMultipartBody exMultipartBody = new ExMultipartBody(builder.build(), new ExMultipartBody.UploadProgressListener() {
+        HQWExMultipartBody exMultipartBody = new HQWExMultipartBody(builder.build(), new HQWExMultipartBody.UploadProgressListener() {
             @Override
             public void onProgress(int progress, int max) {
                 handler.post(() -> {
