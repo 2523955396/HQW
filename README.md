@@ -5,7 +5,7 @@
 - 本库功能针对界面,动画,下载,上传实现封装,后续更会增加多线程传输,影音解码,字幕外挂,字幕调节等等
 - 本库先进入测试阶段,更多详细内容请看Api
 
-#### 安装教程  ![最新版本](https://jitpack.io/v/com.gitee.BAILIS/HQW.svg "version")
+#### 安装教程  ![最新版本](https://jitpack.io/v/2523955396/HQW.svg "version")
 
 setting.gradle
 ```
@@ -15,7 +15,7 @@ repositories {
 ```
 build.gradle
 ```
-implementation 'com.gitee.BAILIS:HQW:version'
+implementation 'com.github.2523955396:HQW:version'
 ```
 #### 准备进行and进行中的计划
 1. 简易封装各组件,达成最简化
