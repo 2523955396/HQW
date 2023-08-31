@@ -1,5 +1,7 @@
 package com.huanqi.android.Utils;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,5 +24,6 @@ public class HQWJsonUtil {
         }
         return textout;
     }
+
 
 }

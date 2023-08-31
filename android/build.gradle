@@ -27,25 +27,22 @@ android {
 }
 
 dependencies {
+    api(libs.core.ktx)
+    api(libs.appcompat)
+    api(libs.material)
+    api(libs.constraintlayout)
+    api(libs.junit)
+    api(libs.ext.junit)
+    api(libs.espresso.core)
+    api(libs.guava)
+    api(libs.koin.core)
+    api(libs.koin.android)
+    api(libs.koin.android.compat)
 
-    api "androidx.core:core-ktx:$rootProject.ext.ktx"
-    api "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
-    api "com.google.android.material:material:$rootProject.ext.material"
-    api "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
-    api "junit:junit:$rootProject.ext.junit"
-    api "androidx.test.ext:junit:$rootProject.ext.ext_junit"
-    api "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
-
-    api "com.google.guava:guava:$rootProject.ext.guava"
-
-    api "com.github.bumptech.glide:glide:$rootProject.ext.glide"
-    api "com.google.android.flexbox:flexbox:$rootProject.ext.flexbox"
-    api "com.makeramen:roundedimageview:$rootProject.ext.roundedimageview"
-    api "jp.wasabeef:recyclerview-animators:$rootProject.ext.animators"
-    api "org.jsoup:jsoup:$rootProject.ext.jsoup"
-
-    api "io.insert-koin:koin-core:$rootProject.ext.koin_core"
-    api "io.insert-koin:koin-android:$rootProject.ext.koin_android"
-    api "io.insert-koin:koin-android-compat:$rootProject.ext.koin_android_compat"
-
+    api(libs.glide)
+    api(libs.flexbox)
+    api(libs.roundedimageview)
+    api(libs.animators)
+    api(libs.jsoup)
+    api(libs.gson)
 }

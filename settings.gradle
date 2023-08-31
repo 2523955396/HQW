@@ -13,6 +13,41 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
         maven { url "https://maven.aliyun.com/repository/releases" }//阿里云播放器等等
     }
+
+    versionCatalogs {
+        create("libs"){
+            library("core.ktx", "androidx.core:core-ktx:1.9.0")
+            library("appcompat", "androidx.appcompat:appcompat:1.6.1")
+            library("material", "com.google.android.material:material:1.8.0")
+            library("constraintlayout", "androidx.constraintlayout:constraintlayout:2.0.4")
+            library("junit", "junit:junit:4.13.2")
+            library("ext.junit", "androidx.test.ext:junit:1.1.5")
+            library("espresso-core", "androidx.test.espresso:espresso-core:3.5.1")
+            library("guava", "com.google.guava:guava:27.0.1-android")
+            library("koin.core", "io.insert-koin:koin-core:3.4.0")
+            library("koin.android", "io.insert-koin:koin-android:3.4.0")
+            library("koin.android.compat", "io.insert-koin:koin-android-compat:3.4.0")
+
+            //android外包
+            library("glide", "com.github.bumptech.glide:glide:4.13.0")
+            library("flexbox", "com.google.android.flexbox:flexbox:3.0.0")
+            library("roundedimageview", "com.makeramen:roundedimageview:2.3.0")
+            library("animators", "jp.wasabeef:recyclerview-animators:4.0.2")
+            library("jsoup", "org.jsoup:jsoup:1.15.4")
+            library("gson", "com.google.code.gson:gson:2.10.1")
+
+            //http外包
+            library("okhttp", "com.squareup.okhttp3:okhttp:4.10.0")
+            library("retrofit", "com.squareup.retrofit2:retrofit:2.9.0")
+            library("java.websocket", "org.java-websocket:Java-WebSocket:1.5.3")
+
+            //Video外包
+            library("exoplayer", "com.google.android.exoplayer:exoplayer:2.15.0")
+            library("alivcArtc", "com.aliyun.sdk.android:AlivcArtc:5.4.4.0")
+            library("rtssdk", "com.aliyun.rts.android:RtsSDK:2.1.0")
+            library("aliyunplayer", "com.aliyun.sdk.android:AliyunPlayer:5.4.4.0-full")
+        }
+    }
 }
 rootProject.name = "HQW"
 include ':app'

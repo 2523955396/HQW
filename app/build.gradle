@@ -20,7 +20,7 @@ android {
     }
 
 
-//    flavorDimensions "hqw"//产品风味
+//    flavorDimensions+="hqw"//产品风味
 //    productFlavors {
 //        dev {
 //            applicationId "com.huanqi.hqw_dev"
@@ -46,8 +46,8 @@ android {
 //            versionName="9.9.9"
 //        }
 //    }
-//
-//
+
+
     buildTypes {
 //        debug {
 //            buildConfigField('int', 'VersionCode', '1')

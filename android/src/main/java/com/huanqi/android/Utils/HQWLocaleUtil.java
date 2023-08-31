@@ -8,8 +8,6 @@ import android.util.DisplayMetrics;
 
 import java.util.Locale;
 
-
-
 /**
  *HQW语言切换
  @用法

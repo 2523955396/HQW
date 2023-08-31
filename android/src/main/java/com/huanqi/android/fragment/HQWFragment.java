@@ -117,6 +117,18 @@ public class HQWFragment extends Fragment {
         }
     }
 
+    /**
+     * 设置拦截截屏录屏
+     * @param isSecure 是否拦截截屏录屏
+     * */
+    public void HQWsetSecure(boolean isSecure) {
+        if (isSecure) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);//不允许截屏录屏
+        } else {
+            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏录屏
+        }
+    }
+
     ActivityResultLauncher<String[]> resultLauncherpermission = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
         @Override
         public void onActivityResult(Map<String, Boolean> result) {

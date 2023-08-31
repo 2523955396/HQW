@@ -29,6 +29,23 @@ public class HQWTimeUtil {
         }
     }
 
+    //--------------------------毫秒时间转换------------------------------//
+    public static String ValueForTime(long timeMs) {
+        if (timeMs <= 0 || timeMs >= 24 * 60 * 60 * 1000) {
+            return "00:00:00";
+        }
+        long hours_remainder = timeMs % (3600*1000);
+        long minutes = hours_remainder / (60*1000);
+        long minutes_remainder = hours_remainder % (60*1000);
+        long seconds = minutes_remainder / 1000;
+        long seconds_remainder = minutes_remainder % 1000;
+        long m = seconds_remainder/10;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter mFormatter = new Formatter(stringBuilder, Locale.getDefault());
+        return mFormatter.format("%02d:%02d:%02d",  minutes, seconds,m).toString();
+    }
+
 
 
     //--------------------------年月份处理类------------------------------//

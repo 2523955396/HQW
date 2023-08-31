@@ -194,6 +194,18 @@ public class HQWActivity extends Activity {
     }
 
     /**
+     * 设置拦截截屏录屏
+     * @param isSecure 是否拦截截屏录屏
+     * */
+    public void HQWsetSecure(boolean isSecure) {
+        if (isSecure) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);//不允许截屏录屏
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏录屏
+        }
+    }
+
+    /**
      * 设置使用HQW状态栏导航栏
      * @param statusBarColor 设置状态栏颜色
      * @param statusBarTextColor 设置状态栏文字颜色false为白色 true为黑色
