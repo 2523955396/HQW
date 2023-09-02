@@ -1,18 +1,72 @@
 package com.huanqi.android.model;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.ColorRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.huanqi.android.activity.HQWActivity;
+import com.huanqi.android.activity.HQWAppCompatActivity;
+import com.huanqi.android.dialog.HQWDialog;
 import com.huanqi.android.fragment.HQWFragment;
 
 public class HQWModel {
     HQWFragment hqwFragment;
     HQWActivity hqwActivity;
+    HQWAppCompatActivity hqwAppCompatActivity;
     Activity activity;
+    AppCompatActivity appCompatActivity;
+    Fragment fragment;
+    Dialog dialog;
+    HQWDialog hqwDialog;
     View view;
     Context context;
+
+    public AppCompatActivity getAppCompatActivity() {
+        return appCompatActivity;
+    }
+
+    public void setAppCompatActivity(AppCompatActivity appCompatActivity) {
+        this.appCompatActivity = appCompatActivity;
+    }
+
+    public Dialog getDialog() {
+        return dialog;
+    }
+
+    public void setDialog(Dialog dialog) {
+        this.dialog = dialog;
+    }
+
+    public HQWDialog getHqwDialog() {
+        return hqwDialog;
+    }
+
+    public void setHqwDialog(HQWDialog hqwDialog) {
+        this.hqwDialog = hqwDialog;
+    }
+
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+    public void setFragment(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public HQWAppCompatActivity getHqwAppCompatActivity() {
+        return hqwAppCompatActivity;
+    }
+
+    public void setHqwAppCompatActivity(HQWAppCompatActivity hqwAppCompatActivity) {
+        this.hqwAppCompatActivity = hqwAppCompatActivity;
+    }
+
     public HQWActivity getHqwActivity() {
         return hqwActivity;
     }
@@ -32,6 +86,7 @@ public class HQWModel {
     public View getView() {
         return view;
     }
+
     public Context getContext() {
         return context;
     }
@@ -54,43 +109,149 @@ public class HQWModel {
 
     public void onCreate() {
     }
+
     public void onCreate(Activity activity) {
-        this.activity=activity;
+        this.activity = activity;
     }
+    public void onCreate(Activity activity, View view) {
+        this.activity = activity;
+        this.view = view;
+    }
+
+    public void onCreate(AppCompatActivity appCompatActivity) {
+        this.appCompatActivity = appCompatActivity;
+    }
+    public void onCreate(AppCompatActivity appCompatActivity, View view) {
+        this.appCompatActivity = appCompatActivity;
+        this.view = view;
+    }
+
+
     public void onCreate(View view) {
-        this.view=view;
+        this.view = view;
     }
+
     public void onCreate(View view, Context context) {
-        this.view=view;
-        this.context=context;
+        this.view = view;
+        this.context = context;
     }
+
+
+
+
     public void onCreate(HQWActivity hqwActivity) {
-        this.hqwActivity=hqwActivity;
+        this.hqwActivity = hqwActivity;
     }
-    public void onCreate(HQWActivity hqwActivity,View view) {
-        this.hqwActivity=hqwActivity;
-        this.view=view;
+
+    public void onCreate(HQWActivity hqwActivity, View view) {
+        this.hqwActivity = hqwActivity;
+        this.view = view;
     }
+
+
+    public void onCreate(HQWAppCompatActivity hqwAppCompatActivity) {
+        this.hqwAppCompatActivity = hqwAppCompatActivity;
+    }
+
+    public void onCreate(HQWAppCompatActivity hqwAppCompatActivity, View view) {
+        this.hqwAppCompatActivity = hqwAppCompatActivity;
+        this.view = view;
+    }
+
+    public void onCreate(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public void onCreate(Fragment fragment, View view) {
+        this.fragment = fragment;
+        this.view = view;
+    }
+
     public void onCreate(HQWFragment hqwFragment) {
-        this.hqwFragment=hqwFragment;
+        this.hqwFragment = hqwFragment;
     }
-    public void onCreate(HQWFragment hqwFragment,View view) {
-        this.hqwFragment=hqwFragment;
-        this.view=view;
+
+    public void onCreate(HQWFragment hqwFragment, View view) {
+        this.hqwFragment = hqwFragment;
+        this.view = view;
     }
+
+    public void onCreate(Dialog dialog) {
+        this.dialog = dialog;
+    }
+
+    public void onCreate(Dialog dialog, View view) {
+        this.dialog = dialog;
+        this.view = view;
+    }
+
+    public void onCreate(HQWDialog hqwDialog) {
+        this.dialog = dialog;
+    }
+
+    public void onCreate(HQWDialog hqwDialog, View view) {
+        this.hqwDialog = hqwDialog;
+        this.view = view;
+    }
+
+    public <VIEW> VIEW findViewById(int Id) {
+        VIEW view = null;
+        if (activity != null) {
+            view = (VIEW) activity.findViewById(Id);
+        } else if (hqwActivity != null) {
+            view = (VIEW) hqwActivity.findViewById(Id);
+        } else if (hqwAppCompatActivity != null) {
+            view = (VIEW) hqwAppCompatActivity.findViewById(Id);
+        } else if (fragment != null) {
+            view = (VIEW) fragment.getActivity().findViewById(Id);
+        } else if (hqwFragment != null) {
+            view = (VIEW) hqwFragment.getActivity().findViewById(Id);
+        } else if (dialog != null) {
+            view = (VIEW) dialog.findViewById(Id);
+        } else if (hqwDialog != null) {
+            view = (VIEW) hqwDialog.findViewById(Id);
+        }
+        return view;
+    }
+
+    public int getColor(@ColorRes int id) {
+        int color = 0;
+        if (activity != null) {
+            color = activity.getResources().getColor(id);
+        } else if (hqwActivity != null) {
+            color = hqwActivity.getResources().getColor(id);
+        } else if (hqwAppCompatActivity != null) {
+            color = hqwAppCompatActivity.getResources().getColor(id);
+        } else if (fragment != null) {
+            color = fragment.getResources().getColor(id);
+        } else if (hqwFragment != null) {
+            color = hqwFragment.getResources().getColor(id);
+        } else if (dialog != null) {
+            color = dialog.getContext().getResources().getColor(id);
+        } else if (hqwDialog != null) {
+            color = hqwDialog.getContext().getResources().getColor(id);
+        }
+        return color;
+    }
+
+
     public void onPause() {
     }
+
     public void onRestart() {
     }
+
     public void onResume() {
     }
+
     public void onDestroy() {
     }
 
-    public void initView(){
+    public void initView() {
 
     }
-    public void initData(){
+
+    public void initData() {
 
     }
 }

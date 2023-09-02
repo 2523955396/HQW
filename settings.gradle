@@ -19,7 +19,7 @@ dependencyResolutionManagement {
             library("core.ktx", "androidx.core:core-ktx:1.9.0")
             library("appcompat", "androidx.appcompat:appcompat:1.6.1")
             library("material", "com.google.android.material:material:1.8.0")
-            library("constraintlayout", "androidx.constraintlayout:constraintlayout:2.0.4")
+            library("constraintlayout", "androidx.constraintlayout:constraintlayout:2.1.4")
             library("junit", "junit:junit:4.13.2")
             library("ext.junit", "androidx.test.ext:junit:1.1.5")
             library("espresso-core", "androidx.test.espresso:espresso-core:3.5.1")
