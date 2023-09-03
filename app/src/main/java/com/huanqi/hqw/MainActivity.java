@@ -32,8 +32,6 @@ public class MainActivity extends HQWActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initModel(new MainModel());
-
-
     }
 
 
