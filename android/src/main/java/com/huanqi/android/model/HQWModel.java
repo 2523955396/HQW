@@ -194,45 +194,6 @@ public class HQWModel {
         this.view = view;
     }
 
-    public <VIEW> VIEW findViewById(int Id) {
-        VIEW view = null;
-        if (activity != null) {
-            view = (VIEW) activity.findViewById(Id);
-        } else if (hqwActivity != null) {
-            view = (VIEW) hqwActivity.findViewById(Id);
-        } else if (hqwAppCompatActivity != null) {
-            view = (VIEW) hqwAppCompatActivity.findViewById(Id);
-        } else if (fragment != null) {
-            view = (VIEW) fragment.getActivity().findViewById(Id);
-        } else if (hqwFragment != null) {
-            view = (VIEW) hqwFragment.getActivity().findViewById(Id);
-        } else if (dialog != null) {
-            view = (VIEW) dialog.findViewById(Id);
-        } else if (hqwDialog != null) {
-            view = (VIEW) hqwDialog.findViewById(Id);
-        }
-        return view;
-    }
-
-    public int getColor(@ColorRes int id) {
-        int color = 0;
-        if (activity != null) {
-            color = activity.getResources().getColor(id);
-        } else if (hqwActivity != null) {
-            color = hqwActivity.getResources().getColor(id);
-        } else if (hqwAppCompatActivity != null) {
-            color = hqwAppCompatActivity.getResources().getColor(id);
-        } else if (fragment != null) {
-            color = fragment.getResources().getColor(id);
-        } else if (hqwFragment != null) {
-            color = hqwFragment.getResources().getColor(id);
-        } else if (dialog != null) {
-            color = dialog.getContext().getResources().getColor(id);
-        } else if (hqwDialog != null) {
-            color = hqwDialog.getContext().getResources().getColor(id);
-        }
-        return color;
-    }
 
 
     public void onPause() {
