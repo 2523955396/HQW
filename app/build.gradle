@@ -17,6 +17,9 @@ android {
         versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
 
@@ -62,14 +65,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//
-//
+
+
 //
 //    dataBinding {
 //        enabled true
 //    }
-//
-//
+
+
 //    viewBinding {
 //        enabled true
 //    }
@@ -102,6 +105,17 @@ android {
         include('classes.jar')
         //重命名
         rename ('classes.jar', 'HQW_1_4_7.jar')
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.3'
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
     makeJar.dependsOn(build)
 }

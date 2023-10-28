@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.huanqi.hqw">
+    xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <uses-permission android:name="android.permission.INTERNET" />&lt;!&ndash;因特网&ndash;&gt;-->
-
-<!--    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />&lt;!&ndash;安装APK需要的权限&ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.INTERNET" /> &lt;!&ndash; 因特网 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> &lt;!&ndash; 安装APK需要的权限 &ndash;&gt;-->
 <!--    <uses-permission-->
 <!--        android:name="android.permission.QUERY_ALL_PACKAGES"-->
-<!--        tools:ignore="QueryAllPackagesPermission" />&lt;!&ndash;获取系统应用信息权限 Android11&+需要 AndroidUtil&ndash;&gt;-->
+<!--        tools:ignore="QueryAllPackagesPermission" /> &lt;!&ndash; 获取系统应用信息权限 Android11&+需要 AndroidUtil &ndash;&gt;-->
+<!--    &lt;!&ndash; 安卓13废弃废弃读写动权 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> &lt;!&ndash; 外部文件读取权限 android13-需要 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> &lt;!&ndash; 外部文件写入权限 android13-需要 &ndash;&gt;-->
+<!--    &lt;!&ndash; 安卓13新增权限 针对图片视频语音 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> &lt;!&ndash; 外部文件图片读取权限 android13&+需要 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /> &lt;!&ndash; 外部文件音频读取权限 android13&+需要 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /> &lt;!&ndash; 外部文件视频读取权限 android13&+需要 &ndash;&gt;-->
+<!--    &lt;!&ndash; 安卓12新增权限 针对蓝牙 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" /> &lt;!&ndash; 外部文件视频读取权限 android12&+需要 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> &lt;!&ndash; 外部文件视频读取权限 android12&+需要 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> &lt;!&ndash; 外部文件视频读取权限 android12&+需要 &ndash;&gt;-->
+<!--    &lt;!&ndash; 安卓12调用蓝牙可不需要位置信息 针对蓝牙 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> &lt;!&ndash; 粗略位置信息 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
 
-<!--    &lt;!&ndash;     安卓13废弃废弃读写动权&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />&lt;!&ndash;外部文件读取权限 android13-需要&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />&lt;!&ndash;外部文件写入权限 android13-需要&ndash;&gt;-->
-
-<!--    &lt;!&ndash;     安卓13新增权限 针对图片视频语音&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />&lt;!&ndash;外部文件图片读取权限 android13&+需要&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />&lt;!&ndash;外部文件音频读取权限 android13&+需要&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />&lt;!&ndash;外部文件视频读取权限 android13&+需要&ndash;&gt;-->
-
-<!--    &lt;!&ndash;     安卓12新增权限 针对蓝牙&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />&lt;!&ndash;外部文件视频读取权限 android12&+需要&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />&lt;!&ndash;外部文件视频读取权限 android12&+需要&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />&lt;!&ndash;外部文件视频读取权限 android12&+需要&ndash;&gt;-->
-
-<!--    &lt;!&ndash;     安卓12调用蓝牙可不需要位置信息 针对蓝牙&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />&lt;!&ndash;粗略位置信息&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />&lt;!&ndash;粗略位置信息&ndash;&gt;-->
-
-
-<!--    &lt;!&ndash;粗略位置信息-->
-<!--     android:usesPermissionFlags="neverForLocation"安卓12&+不给位置定位权限搜索蓝牙设备需要添加,否则搜索不到蓝牙位置-->
-<!--     android:usesCleartextTraffic="true"明文流量-->
-
-<!--    &ndash;&gt;-->
 <!--    <application-->
 <!--        android:allowBackup="true"-->
 <!--        android:icon="@mipmap/ic_launcher"-->
@@ -45,12 +33,14 @@
 <!--        android:theme="@style/Theme.HQW"-->
 <!--        android:usesCleartextTraffic="true"-->
 <!--        android:usesPermissionFlags="neverForLocation">-->
+<!--        -->
 <!--        <activity-->
 <!--            android:name=".MainActivity"-->
 <!--            android:configChanges="orientation|screenSize"-->
 <!--            android:exported="true">-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
+
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
 <!--        </activity>-->
@@ -65,6 +55,5 @@
 <!--                android:resource="@xml/filepaths" />-->
 <!--        </provider>-->
 <!--    </application>-->
-
 
 </manifest>

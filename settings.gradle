@@ -17,7 +17,8 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs"){
             library("core.ktx", "androidx.core:core-ktx:1.9.0")
-            library("appcompat", "androidx.appcompat:appcompat:1.6.1")
+            library("appcompat", "androidx.appcompat:appcompat:1.6.1")//Activity组建 旧
+            library("compose", "androidx.activity:activity-compose:1.7.0")//Activity组建 新
             library("material", "com.google.android.material:material:1.8.0")
             library("constraintlayout", "androidx.constraintlayout:constraintlayout:2.1.4")
             library("junit", "junit:junit:4.13.2")
@@ -27,6 +28,7 @@ dependencyResolutionManagement {
             library("koin.core", "io.insert-koin:koin-core:3.4.0")
             library("koin.android", "io.insert-koin:koin-android:3.4.0")
             library("koin.android.compat", "io.insert-koin:koin-android-compat:3.4.0")
+            library("lifecycle.runtime.ktx", "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
 
             //android外包
             library("glide", "com.github.bumptech.glide:glide:4.13.0")

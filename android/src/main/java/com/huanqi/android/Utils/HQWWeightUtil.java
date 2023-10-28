@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import androidx.fragment.app.Fragment;
@@ -39,30 +40,37 @@ public class HQWWeightUtil {
         decorView.setSystemUiVisibility(0);
     }
 
-    public static int getPhoneWidth(Activity activity) {
-        return activity.getResources().getDisplayMetrics().widthPixels;
+    public static int getPhoneStatusBarHeight(Context context) {
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 
-    public static int getPhoneHigh(Activity activity) {
-        return activity.getResources().getDisplayMetrics().heightPixels;
-    }
-
-    public static int getPhoneWidth(Fragment fragment) {
-        return fragment.getResources().getDisplayMetrics().widthPixels;
-    }
-
-    public static int getPhoneHigh(Fragment fragment) {
-        return fragment.getResources().getDisplayMetrics().heightPixels;
-    }
 
     public static int getPhoneWidth(Context context) {
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    public static int getPhoneHigh(Context context) {
+    public static int getPhoneHeigh(Context context) {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 
+
+    public static void drawMonitor(View view,DrawCallback drawCallback){
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                drawCallback.onSuccess();
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+    }
+
+    public interface DrawCallback{
+        void onSuccess();
+    }
 
 
 }

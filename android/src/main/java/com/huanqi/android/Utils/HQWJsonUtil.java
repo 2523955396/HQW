@@ -22,7 +22,7 @@ public class HQWJsonUtil {
      * @param data 数据
      * @param key Key
      */
-    public static String ObjectValue(String data, String key) {
+    public static String value(String data, String key) {
         String value = "";
         try {
             value = new JSONObject(data).getString(key);
@@ -36,7 +36,7 @@ public class HQWJsonUtil {
      * @param data 数据
      * @param index 获取第几个
      */
-    public static String ArrayValue(String data, int index) {
+    public static String value(String data, int index) {
         String value = "";
         try {
             value = new JSONArray(data).getString(index);
@@ -62,9 +62,9 @@ public class HQWJsonUtil {
      * @param data 数据
      * @param obj  数据结构
      */
-    public static <T> List<T> fromJsonList(String data, Class obj) {
-        Type listType = com.google.gson.internal.$Gson$Types.newParameterizedTypeWithOwner(null, ArrayList.class, obj);
-        return new Gson().fromJson(data, listType);
+    public static <T> List<T> fromJson(String data, List<T> obj) {
+        List<T> object = (List<T>) new Gson().fromJson(data, new TypeToken<List<T>>(){}.getType());
+        return object;
     }
 
 

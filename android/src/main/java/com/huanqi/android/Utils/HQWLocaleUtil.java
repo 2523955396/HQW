@@ -16,15 +16,6 @@ import java.util.Locale;
  }
  * */
 public class HQWLocaleUtil {
-    public static void setLanguage(Context context, String language, String country) {
-        Resources resources = context.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        Configuration configuration = resources.getConfiguration();
-        configuration.locale = new Locale(language, country);
-        resources.updateConfiguration(configuration, metrics);
-    }
-
-
     /**
      * 初始化语言 语言包切换
      *

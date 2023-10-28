@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DecimalFormat;
 
 /**
@@ -113,6 +114,29 @@ public class HQWFileUtil {
             file.mkdirs();
         }
         return new File(file+"/"+filename);
+    }
+
+
+    /**
+     * 复制文件
+     */
+    public static File copyFile(InputStream inputStream,File file) {
+        OutputStream outPut = null;
+        try {
+            outPut = new FileOutputStream(file);
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = inputStream.read(buffer)) != -1) {
+                outPut.write(buffer, 0, read);
+            }
+            inputStream.close();
+            outPut.flush();
+            outPut.close();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
