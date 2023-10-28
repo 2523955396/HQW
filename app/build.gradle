@@ -93,6 +93,8 @@ android {
 
 
 
+
+
     task makeJar(type: Copy) {
         //删除存在的
         delete 'build/libs/myjar.jar'
@@ -118,7 +120,30 @@ android {
         }
     }
     makeJar.dependsOn(build)
+
+    publishing{
+        singleVariant("release")
+    }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.huanqi'
+                artifactId = 'hqw'
+                version = "1.6.7"
+                from components.release
+
+                pom {
+                    description = '焕奇灵动'
+                }
+            }
+        }
+    }
+}
+
+
 
 
 dependencies {
