@@ -157,7 +157,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId 'com.huanqi.hqw'
                 artifactId 'hqw'
-                version '1.7.0'
+                version '1.8.0'
                 from components.release
                 pom {
                     description = '焕奇灵动'
