@@ -79,8 +79,8 @@ android {
 
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
 //    kotlinOptions {
@@ -151,20 +151,20 @@ dependencies {
 }
 
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                groupId 'com.huanqi.hqw'
-//                artifactId 'hqw'
-//                version '1.7.0'
-//                from components.release
-//                pom {
-//                    description = '焕奇灵动'
-//                }
-//            }
-//        }
-//
-//
-//    }
-//}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId 'com.huanqi.hqw'
+                artifactId 'hqw'
+                version '1.7.0'
+                from components.release
+                pom {
+                    description = '焕奇灵动'
+                }
+            }
+        }
+
+
+    }
+}
