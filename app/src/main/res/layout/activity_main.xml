@@ -8,4 +8,20 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/tv_donwload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击下载"/>
+    <TextView
+        android:id="@+id/tv_donwload_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂停"/>
+    <ProgressBar
+        android:id="@+id/pb_donwload"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
 </LinearLayout>

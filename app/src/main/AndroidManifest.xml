@@ -33,9 +33,9 @@
 <!--        android:theme="@style/Theme.HQW"-->
 <!--        android:usesCleartextTraffic="true"-->
 <!--        android:usesPermissionFlags="neverForLocation">-->
-<!--        -->
+
 <!--        <activity-->
-<!--            android:name=".MainActivity"-->
+<!--            android:name="com.huanqi.hqw.MainActivity"-->
 <!--            android:configChanges="orientation|screenSize"-->
 <!--            android:exported="true">-->
 <!--            <intent-filter>-->

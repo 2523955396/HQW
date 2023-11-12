@@ -58,8 +58,8 @@ android {
 //        }
 
         release {
-            buildConfigField('int', 'VersionCode', '1')
-            buildConfigField('String', 'VersionName', '"1.0.0"')
+//            buildConfigField('int', 'VersionCode', '1')
+//            buildConfigField('String', 'VersionName', '"1.0.0"')
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
