@@ -8,11 +8,17 @@
 #### 安装教程  ![最新版本](https://jitpack.io/v/com.gitee.BAILIS/HQW.svg "version")
 
 setting.gradle
+
 ```
-repositories {
-        maven { url 'https://jitpack.io' }
-    }
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ```
+
 build.gradle
 ```
 implementation 'com.gitee.BAILIS:HQW:version'
