@@ -31,3 +31,4 @@ implementation 'com.gitee.BAILIS:HQW:version'
 #### 整库情况
 1. 已支持安卓13 MinSDK21 TarGetSDK33
 2. 内含EXOPlayer Ffmpeg扩展仓库,需要自取video Module
+3.Gradle Version已适配8.0以上
