@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
 //    id 'com.android.application'
-//    id 'org.jetbrains.kotlin.android'
-//    id 'maven-publish'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -126,18 +126,17 @@ android {
 //    }
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                groupId = 'com.huanqi'
-//                artifactId = 'hqw'
-//                version = "1.6.7"
-//                from components.release
+
+//publishing {
+//    publications {
+//        release(MavenPublication) {
+//            groupId = 'com.huanqi'
+//            artifactId = 'hqw'
+//            version = "1.6.7"
+//            from components.release
 //
-//                pom {
-//                    description = '焕奇灵动'
-//                }
+//            pom {
+//                description = '焕奇灵动'
 //            }
 //        }
 //    }
@@ -145,9 +144,27 @@ android {
 
 
 
-
 dependencies {
     implementation project(':android')
     implementation project(':http')
 //    implementation project(':video')
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId 'com.huanqi.hqw'
+                artifactId 'hqw'
+                version '1.7.0'
+                from components.release
+                pom {
+                    description = '焕奇灵动'
+                }
+            }
+        }
+
+
+    }
 }
