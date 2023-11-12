@@ -10,7 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io'
+            credentials {
+                username "2523955396"
+                password "l56585470"
+            }}
         maven { url "https://maven.aliyun.com/repository/releases" }//阿里云播放器等等
     }
 
